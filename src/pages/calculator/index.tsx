@@ -61,29 +61,29 @@ export default function Calculator() {
 		convertWater(waterPerServing, waterUnit, displayPrecision).toString(),
 	);
 
-	const handleWaterBlur = () => {
-		const parsed = Number(waterInput);
-		if (!Number.isNaN(parsed)) {
-			if (waterUnit === "liters") {
-				// Snap to a multiple of 0.05 (allowed increments: 0.5, 1.0 etc.)
-				const valid = Math.round(parsed * 2) / 2;
-				// Update the base value (in ml) using reverseConvertWater, then update the input display
-				setWaterPerServing(reverseConvertWater(valid, waterUnit));
-				setWaterInput(valid.toFixed(1));
-			} else {
-				setWaterPerServing(reverseConvertWater(parsed, waterUnit));
-				setWaterInput(
-					convertWater(
-						reverseConvertWater(parsed, waterUnit),
-						waterUnit,
-					).toString(),
-				);
-			}
-		} else {
-			// If input is invalid, revert to the proper converted value
-			setWaterInput(convertWater(waterPerServing, waterUnit).toString());
-		}
-	};
+	// const handleWaterBlur = () => {
+	// 	const parsed = Number(waterInput);
+	// 	if (!Number.isNaN(parsed)) {
+	// 		if (waterUnit === "liters") {
+	// 			// Snap to a multiple of 0.05 (allowed increments: 0.5, 1.0 etc.)
+	// 			const valid = Math.round(parsed * 2) / 2;
+	// 			// Update the base value (in ml) using reverseConvertWater, then update the input display
+	// 			// setWaterPerServing(reverseConvertWater(valid, waterUnit));
+	// 			setWaterInput(valid.toFixed(1));
+	// 		} else {
+	// 			setWaterPerServing(reverseConvertWater(parsed, waterUnit));
+	// 			setWaterInput(
+	// 				convertWater(
+	// 					reverseConvertWater(parsed, waterUnit),
+	// 					waterUnit,
+	// 				).toString(),
+	// 			);
+	// 		}
+	// 	} else {
+	// 		// If input is invalid, revert to the proper converted value
+	// 		setWaterInput(convertWater(waterPerServing, waterUnit).toString());
+	// 	}
+	// };
 	//?? state and effect for taking customization of base unit into account
 
 	// When servings change, update waterAmount.
@@ -257,7 +257,7 @@ export default function Calculator() {
 													),
 												)
 											}
-											onBlur={handleWaterBlur}
+											// onBlur={handleWaterBlur}
 											className="w-24 text-center border rounded"
 										/>
 										<button
@@ -311,7 +311,7 @@ export default function Calculator() {
 						<p>
 							Based on your selections, your recipe is:{" "}
 							<strong>
-								{`${Number(coffeeAmount.toFixed(2))} ${coffeeUnit} of coffee for ${convertWater(
+								{`${Number(coffeeAmount.toFixed(1))} ${coffeeUnit} of coffee for ${convertWater(
 									waterAmount,
 									waterUnit,
 								)} ${waterUnit} of water`}
