@@ -1,11 +1,11 @@
 import Head from "next/head";
 import { useEffect, useMemo, useState } from "react";
 import { BREW_METHOD_RANGES, type RatioRange } from "@/constants/brewRanges";
-
 import {
 	BREW_METHOD_DEFAULTS,
 	type BrewDefaults,
 } from "@/constants/brewDefaults";
+import { convertWater } from "@/utils/unitConversion";
 
 export default function Calculator() {
 	const [brewMethod, setBrewMethod] = useState("Pour-over");
@@ -13,6 +13,7 @@ export default function Calculator() {
 	const [coffeeUnit, setCoffeeUnit] = useState("grams");
 	const [waterUnit, setWaterUnit] = useState("milliliters");
 	const [servings, setServings] = useState(1);
+	const [showCustomize, setShowCustomize] = useState(false);
 
 	const defaultBrewMethods = ["Pour-over", "French press", "Auto drip", "V60"];
 	const extraBrewMethods = [
@@ -22,6 +23,8 @@ export default function Calculator() {
 		"Cold Brew",
 		"AeroPress",
 	];
+	const coffeeUnits = ["grams", "ounces", "teaspoons", "tablespoons"];
+	const waterUnits = ["grams", "milliliters", "liters", "fluid ounces"];
 
 	const brewDefaults: BrewDefaults =
 		BREW_METHOD_DEFAULTS[brewMethod] || BREW_METHOD_DEFAULTS["Pour-over"];
@@ -31,36 +34,36 @@ export default function Calculator() {
 		? [...defaultBrewMethods, ...extraBrewMethods]
 		: defaultBrewMethods;
 
-	const coffeeUnits = ["grams", "ounces", "teaspoons", "tablespoons"];
-	const waterUnits = ["grams", "milliliters", "liters", "fluid ounces"];
-
 	// preset values for different brew methods
 	const ratioRange = useMemo<RatioRange>(() => {
 		return BREW_METHOD_RANGES[brewMethod] || BREW_METHOD_RANGES["Pour-over"];
 	}, [brewMethod]);
 
-	// Set the default value to middle of recommend
+	// Set the default value to middle of recommended range
 	useEffect(() => {
 		const mid = Math.round((ratioRange.min + ratioRange.max) / 2);
 		setStrength(mid);
 	}, [ratioRange]);
 
-	//Initialize wateramount based on defaults/constants
-	const [waterAmount, setWaterAmount] = useState(
-		brewDefaults.waterPerServing * servings,
+	//?? Utils! Initialize wateramount based on defaults/constants
+	const roundToHalf = (num: number) => Math.round(num * 2) / 2;
+
+	const [waterPerServing, setWaterPerServing] = useState(
+		brewDefaults.waterPerServing,
 	);
-	const [coffeeAmount, setCoffeeAmount] = useState(
-		Math.round(waterAmount / strength),
-	);
+
+	const [waterAmount, setWaterAmount] = useState(brewDefaults.waterPerServing);
+	const [coffeeAmount, setCoffeeAmount] = useState(waterAmount / strength);
+	//?? state and effect for taking customization of base unit into account
 
 	// When servings change, update waterAmount.
 	useEffect(() => {
-		setWaterAmount(brewDefaults.waterPerServing * servings);
-	}, [servings, brewDefaults.waterPerServing]);
+		setWaterAmount(waterPerServing * servings);
+	}, [servings, waterPerServing]);
 
 	// When waterAmount or strength changes, update coffeeAmount.
 	useEffect(() => {
-		setCoffeeAmount(Math.round(waterAmount / strength));
+		setCoffeeAmount(waterAmount / strength);
 	}, [waterAmount, strength]);
 
 	return (
@@ -179,71 +182,85 @@ export default function Calculator() {
 						>
 							+
 						</button>
+						{/* 4.1 Dropdown toggle to show or hide custom */}
+						<button
+							type="button"
+							onClick={() => setShowCustomize((prev) => !prev)}
+							className="px-3 py-1 border rounded ml-4 text-sm text-blue-500"
+						>
+							{showCustomize ? "Hide" : "Adjust volume per serving"}
+						</button>
 					</div>
 				</section>
 
-				{/* 5. Customize Water and Coffee levels according to set ratio */}
-				<section className="p-4 border rounded-lg w-full max-w-md">
-					<h2 className="text-2xl mb-4">Customize Amounts</h2>
-					<div className="flex flex-col gap-4">
-						<div>
-							<label htmlFor="water-amount" className="block mb-1">
-								Water Amount ({waterUnit})
-							</label>
-							<div className="flex items-center gap-2">
-								<button
-									type="button"
-									onClick={() => setWaterAmount(Math.max(0, waterAmount - 10))}
-									className="px-3 py-1 border rounded"
-								>
-									-
-								</button>
-								<input
-									id="water-amount"
-									type="number"
-									value={waterAmount}
-									onChange={(e) => setWaterAmount(Number(e.target.value))}
-									className="w-24 text-center border rounded"
-								/>
-								<button
-									type="button"
-									onClick={() => setWaterAmount(waterAmount + 10)}
-									className="px-3 py-1 border rounded"
-								>
-									+
-								</button>
+				{/* 5. Customize Water and Coffee on conditional */}
+				{showCustomize && (
+					<section className="p-4 border rounded-lg w-full max-w-md">
+						<h2 className="text-2xl mb-4">Customize Amounts</h2>
+						<div className="flex flex-col gap-4">
+							<div>
+								<label htmlFor="water-amount" className="block mb-1">
+									Water per serving ({waterUnit})
+								</label>
+								<div className="flex items-center gap-2">
+									<button
+										type="button"
+										onClick={() =>
+											setWaterPerServing(Math.max(0, waterPerServing - 10))
+										}
+										className="px-3 py-1 border rounded"
+									>
+										-
+									</button>
+									<input
+										id="water-amount"
+										type="number"
+										value={waterPerServing}
+										onChange={(e) => setWaterPerServing(Number(e.target.value))}
+										className="w-24 text-center border rounded"
+									/>
+									<button
+										type="button"
+										onClick={() => setWaterPerServing(waterPerServing + 10)}
+										className="px-3 py-1 border rounded"
+									>
+										+
+									</button>
+								</div>
+							</div>
+							<div>
+								<label htmlFor="coffee-amount" className="block mb-1">
+									Coffee Amount ({coffeeUnit})
+								</label>
+								<div className="flex items-center gap-2">
+									<button
+										type="button"
+										onClick={() =>
+											setCoffeeAmount(Math.max(0, coffeeAmount - 1))
+										}
+										className="px-3 py-1 border rounded"
+									>
+										-
+									</button>
+									<input
+										id="coffee-amount"
+										type="number"
+										value={coffeeAmount}
+										onChange={(e) => setCoffeeAmount(Number(e.target.value))}
+										className="w-24 text-center border rounded"
+									/>
+									<button
+										type="button"
+										onClick={() => setCoffeeAmount(coffeeAmount + 1)}
+										className="px-3 py-1 border rounded"
+									>
+										+
+									</button>
+								</div>
 							</div>
 						</div>
-						<div>
-							<label htmlFor="coffee-amount" className="block mb-1">
-								Coffee Amount ({coffeeUnit})
-							</label>
-							<div className="flex items-center gap-2">
-								<button
-									type="button"
-									onClick={() => setCoffeeAmount(Math.max(0, coffeeAmount - 1))}
-									className="px-3 py-1 border rounded"
-								>
-									-
-								</button>
-								<input
-									id="coffee-amount"
-									type="number"
-									value={coffeeAmount}
-									onChange={(e) => setCoffeeAmount(Number(e.target.value))}
-									className="w-24 text-center border rounded"
-								/>
-								<button
-									type="button"
-									onClick={() => setCoffeeAmount(coffeeAmount + 1)}
-									className="px-3 py-1 border rounded"
-								>
-									+
-								</button>
-							</div>
-						</div>
-					</div>
-				</section>
+					</section>
+				)}
 
 				{/* 6. Display Calculated Values */}
 				<section className="p-4 border rounded-lg w-full max-w-md">
@@ -251,7 +268,12 @@ export default function Calculator() {
 					<div className="p-4 bg-gray-100 rounded">
 						<p>
 							Based on your selections, your recipe is:{" "}
-							<strong>{`${coffeeAmount} ${coffeeUnit} of coffee for ${waterAmount} of water`}</strong>
+							<strong>
+								{`${roundToHalf(coffeeAmount)} ${coffeeUnit} of coffee for ${convertWater(
+									waterAmount,
+									waterUnit,
+								)} ${waterUnit} of water`}
+							</strong>
 						</p>
 					</div>
 				</section>
@@ -259,3 +281,4 @@ export default function Calculator() {
 		</div>
 	);
 }
+//<strong>{`${coffeeAmount} ${coffeeUnit} of coffee for ${waterAmount} ${waterUnit} of water`}</strong>
