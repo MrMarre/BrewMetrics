@@ -18,7 +18,20 @@ export function convertWater(
 			converted = amount / 29.57;
 			return Number(converted.toFixed(precision ?? 1));
 		default:
-			converted = amount;
+			return amount;
 	}
-	return Number.parseFloat(converted.toFixed(precision));
+}
+
+export function reverseConvertWater(amount: number, fromUnit: string): number {
+	switch (fromUnit) {
+		case "milliliters":
+		case "grams":
+			return amount;
+		case "liters":
+			return amount * 1000;
+		case "fluid ounces":
+			return amount * 29.57;
+		default:
+			return amount;
+	}
 }
