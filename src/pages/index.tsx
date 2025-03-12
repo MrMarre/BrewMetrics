@@ -29,6 +29,9 @@ export default function Home() {
 						Join me
 					</Link>
 				</div>
+				<div className="flex gap-4 items-center flex-col sm:flex-row font-semibold">
+					<Link href="/hookForm"> TJENNA</Link>
+				</div>
 			</main>
 		</div>
 	);

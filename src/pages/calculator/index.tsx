@@ -48,7 +48,7 @@ export default function Calculator() {
 	//?? Utils! Initialize wateramount based on defaults/constants
 	const roundToHalf = (num: number) => Math.round(num * 2) / 2;
 
-	const [waterPerServing, setWaterPerServing] = useState(
+	const [waterPerServing, setWaterPerServing] = useState<number>(
 		brewDefaults.waterPerServing,
 	);
 
@@ -60,6 +60,17 @@ export default function Calculator() {
 	const [waterInput, setWaterInput] = useState(
 		convertWater(waterPerServing, waterUnit, displayPrecision).toString(),
 	);
+	const handleWaterInputChange = (raw: string) => {
+		// Remove all leading zeros (but keep the "0" if it's the only character)
+		const sanitized = raw.replace(/^0+(?=\d)/, "");
+		setWaterInput(sanitized);
+		if (sanitized !== "") {
+			const num = Number(sanitized);
+			if (!Number.isNaN(num)) {
+				setWaterPerServing(reverseConvertWater(num, waterUnit));
+			}
+		}
+	};
 
 	// const handleWaterBlur = () => {
 	// 	const parsed = Number(waterInput);
@@ -248,15 +259,19 @@ export default function Calculator() {
 										<input
 											id="water-per-serving"
 											type="number"
-											value={convertWater(waterPerServing, waterUnit)}
-											onChange={(e) =>
-												setWaterPerServing(
-													reverseConvertWater(
-														Number(e.target.value),
-														waterUnit,
-													),
-												)
+											value={
+												convertWater(waterPerServing ?? 0, waterUnit) || ""
 											}
+											onChange={(e) => {
+												e.target.value === ""
+													? waterPerServing
+													: setWaterPerServing(
+															reverseConvertWater(
+																Number(e.target.value),
+																waterUnit,
+															),
+														);
+											}}
 											// onBlur={handleWaterBlur}
 											className="w-24 text-center border rounded"
 										/>
@@ -314,7 +329,7 @@ export default function Calculator() {
 								{`${Number(coffeeAmount.toFixed(1))} ${coffeeUnit} of coffee for ${convertWater(
 									waterAmount,
 									waterUnit,
-								)} ${waterUnit} of water`}
+								)} ${waterUnit} of water.`}
 							</strong>
 						</p>
 					</div>
