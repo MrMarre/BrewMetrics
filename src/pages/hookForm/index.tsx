@@ -5,11 +5,7 @@ import {
 	BREW_METHOD_DEFAULTS,
 	type BrewDefaults,
 } from "@/constants/brewDefaults";
-import {
-	convertCoffeeUnit,
-	convertWater,
-	reverseConvertWater,
-} from "@/utils/unitConversion";
+import { convertWater, reverseConvertWater } from "@/utils/unitConversion";
 import NumberField from "./components/NumberField";
 import useFormStates from "./utils/useFormStates";
 import RadioButtons from "./components/RadioButtons";
@@ -37,7 +33,7 @@ export default function Calculator() {
 		handleResetClick,
 		waterAmount,
 		ratioRange,
-
+		coffeeUnit,
 		coffeeAmount,
 	} = useFormStates();
 
@@ -146,7 +142,7 @@ export default function Calculator() {
 					<div className="flex flex-col gap-4">
 						<div className="p-4 bg-gray-100 rounded">
 							<h3 className="text-lg font-bold">Coffee</h3>
-							<p>{coffeeAmount}</p>
+							<p>{`${coffeeAmount?.toFixed(2)} ${coffeeUnit}`}</p>
 						</div>
 						<div className="p-4 bg-gray-100 rounded">
 							<h3 className="text-lg font-bold">Water</h3>
@@ -154,7 +150,7 @@ export default function Calculator() {
 								{`${convertWater(
 									waterAmount,
 									watch("waterUnit") ?? "",
-									0,
+									2,
 								)} ${watch("waterUnit")}`}
 							</p>
 						</div>

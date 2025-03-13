@@ -11,6 +11,7 @@ type Props<TField extends FieldValues> = {
 	onChangeHandler?: (value: number, dependantValue: string) => void;
 	valueFormatter?: (value: number, dependantValue: string) => number;
 	dependantValue?: string;
+	minValue?: number;
 };
 
 const NumberField = <TField extends FieldValues>({
@@ -21,6 +22,7 @@ const NumberField = <TField extends FieldValues>({
 	valueFormatter,
 	dependantValue,
 	incrementValue,
+	minValue = 1,
 }: Props<TField>) => {
 	return (
 		<Controller
@@ -37,7 +39,7 @@ const NumberField = <TField extends FieldValues>({
 							<button
 								type="button"
 								onClick={() =>
-									onChange(Math.max(0, Number(value) - incrementValue))
+									onChange(Math.max(minValue, Number(value) - incrementValue))
 								}
 								className="px-3 py-1 border rounded"
 							>
