@@ -3,11 +3,6 @@
 import React, { useState, ReactNode } from "react";
 import { Control, Controller, FieldValues, Path } from "react-hook-form";
 
-type Option<T> = {
-	label: string;
-	value: T;
-};
-
 type Props<TField extends FieldValues> = {
 	control: Control<TField>;
 	name: Path<TField>;

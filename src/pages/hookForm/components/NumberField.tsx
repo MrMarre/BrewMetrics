@@ -36,7 +36,9 @@ const NumberField = <TField extends FieldValues>({
 						<div className="flex items-center gap-2">
 							<button
 								type="button"
-								onClick={() => onChange(Math.max(0, value - incrementValue))}
+								onClick={() =>
+									onChange(Math.max(0, Number(value) - incrementValue))
+								}
 								className="px-3 py-1 border rounded"
 							>
 								-
@@ -64,7 +66,6 @@ const NumberField = <TField extends FieldValues>({
 													) ?? "")
 												: (value ?? "");
 
-									console.log("parsedValue", parsedValue);
 									onChange(parsedValue);
 								}}
 								onBlur={onBlur}
@@ -72,7 +73,9 @@ const NumberField = <TField extends FieldValues>({
 							/>
 							<button
 								type="button"
-								onClick={() => onChange(Math.max(0, value + incrementValue))}
+								onClick={() =>
+									onChange(Math.max(0, Number(value) + incrementValue))
+								}
 								className="px-3 py-1 border rounded"
 							>
 								+

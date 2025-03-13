@@ -5,10 +5,16 @@ import {
 	BREW_METHOD_DEFAULTS,
 	type BrewDefaults,
 } from "@/constants/brewDefaults";
-import { convertWater, reverseConvertWater } from "@/utils/unitConversion";
+import {
+	convertCoffeeUnit,
+	convertWater,
+	reverseConvertWater,
+} from "@/utils/unitConversion";
 import NumberField from "./components/NumberField";
 import useFormStates from "./utils/useFormStates";
 import RadioButtons from "./components/RadioButtons";
+import RangeInput from "./components/RatioRange";
+import SectionCard from "./components/SectionCard";
 
 const defaultBrewMethods = [
 	"Pour-over",
@@ -21,33 +27,38 @@ const defaultBrewMethods = [
 	"Cold Brew",
 	"AeroPress",
 ];
+const coffeeUnits = ["grams", "ounces", "coffee spoons"];
+const waterUnits = ["grams", "milliliters", "liters", "fluid ounces"];
 
 export default function Calculator() {
-	const [brewMethod, setBrewMethod] = useState("Pour-over"); // radiobuttons
-	const [strength, setStrength] = useState(15); // number skall ändras utefter vald brewmethod
-	const [showCustomize, setShowCustomize] = useState(false); // boolean
+	const {
+		watch,
+		control,
+		handleResetClick,
+		waterAmount,
+		ratioRange,
 
-	const coffeeUnits = ["grams", "ounces", "teaspoons", "tablespoons"];
-	const waterUnits = ["grams", "milliliters", "liters", "fluid ounces"];
+		coffeeAmount,
+	} = useFormStates();
 
-	// preset values for different brew methods
-	const ratioRange = useMemo<RatioRange>(() => {
-		return BREW_METHOD_RANGES[brewMethod] || BREW_METHOD_RANGES["Pour-over"];
-	}, [brewMethod]);
-
-	const { watch, control, handleResetClick, waterAmount } = useFormStates();
+	const [showCustomize, setShowCustomize] = useState(false);
 
 	return (
 		<div>
 			<Head>
 				<title>Coffee to Water Ratio explained</title>
 			</Head>
-			<button type="button" onClick={handleResetClick}>
+			<button
+				className="px-3 py-1 border rounded"
+				type="button"
+				onClick={handleResetClick}
+			>
 				reset all
 			</button>
+
 			<form className="container mx-auto p-8 flex flex-col gap-8 items-center">
 				<h1 className="text-3xl font-bold text-center">React-hook-form-calc</h1>
-				<section className="p-4 border rounded-lg w-full max-w-md">
+				<SectionCard>
 					{/* 1. Select Brew Method */}
 					<RadioButtons
 						control={control}
@@ -56,22 +67,20 @@ export default function Calculator() {
 						options={defaultBrewMethods}
 						limitAmount={4}
 					/>
-				</section>
+				</SectionCard>
 				{/* 2. Adjust Strength */}
-				<section className="p-4 border rounded-lg w-full max-w-md">
-					<h2 className="text-2xl mb-4">Adjust Strength</h2>
-					<input
-						type="range"
-						{...ratioRange}
-						value={strength}
-						onChange={(e) => setStrength(Number(e.target.value))}
-						className="w-full"
+				<SectionCard>
+					<RangeInput
+						label={<h2 className="text-2xl mb-4">Adjust Strength</h2>}
+						control={control}
+						name="strength"
+						minValue={ratioRange.min}
+						maxValue={ratioRange.max}
 					/>
-					<div className="mt-2 text-sm">Current ratio is 1:{strength}</div>
-				</section>
+				</SectionCard>
 
 				{/* 3. Choose Units */}
-				<section className="p-4 border rounded-lg w-full max-w-md">
+				<SectionCard>
 					<h2 className="text-2xl mb-4">Choose Units</h2>
 
 					<RadioButtons
@@ -87,10 +96,10 @@ export default function Calculator() {
 						label={<h3 className="text-xl my-2">Water</h3>}
 						options={waterUnits}
 					/>
-				</section>
+				</SectionCard>
 
 				{/* 4. Choose Number of Servings */}
-				<section className="p-4 border rounded-lg w-full max-w-md">
+				<SectionCard>
 					<h2 className="text-2xl mb-4">Decide on number of servings</h2>
 					<div className="flex items-center gap-4">
 						<NumberField control={control} name="servings" incrementValue={1} />
@@ -124,17 +133,40 @@ export default function Calculator() {
 									name="coffeeAmount"
 									label="Coffee Amount in"
 									dependantValue={watch("coffeeUnit")}
-									incrementValue={10}
+									incrementValue={1}
 								/>
 							</div>
 						</div>
 					)}
-				</section>
+				</SectionCard>
 
 				{/* 6. Display Calculated Values */}
-				<section className="p-4 border rounded-lg w-full max-w-md">
+				<SectionCard>
 					<h2 className="text-2xl mb-4">Calculated Values</h2>
-					<div className="p-4 bg-gray-100 rounded">
+					<div className="flex flex-col gap-4">
+						<div className="p-4 bg-gray-100 rounded">
+							<h3 className="text-lg font-bold">Coffee</h3>
+							<p>{coffeeAmount}</p>
+						</div>
+						<div className="p-4 bg-gray-100 rounded">
+							<h3 className="text-lg font-bold">Water</h3>
+							<p>
+								{`${convertWater(
+									waterAmount,
+									watch("waterUnit") ?? "",
+									0,
+								)} ${watch("waterUnit")}`}
+							</p>
+						</div>
+					</div>
+				</SectionCard>
+			</form>
+		</div>
+	);
+}
+
+{
+	/* <div className="p-4 bg-gray-100 rounded">
 						<p>
 							Based on your selections, your recipe is:{" "}
 							<strong>
@@ -144,9 +176,5 @@ export default function Calculator() {
 								)} ${watch("waterUnit")} of water.`}
 							</strong>
 						</p>
-					</div>
-				</section>
-			</form>
-		</div>
-	);
+					</div> */
 }

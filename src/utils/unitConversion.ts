@@ -35,3 +35,21 @@ export function reverseConvertWater(amount: number, fromUnit: string): number {
 			return amount;
 	}
 }
+
+export const convertFromGramsToCoffeeSpoons = (amount: number): number =>
+	amount / 30;
+
+export const convertFromGramsToOunces = (amount: number): number =>
+	amount / 28.34952;
+
+export const convertFromOuncesToCoffeeSpoons = (amount: number): number =>
+	amount * 0.944984;
+
+export const convertFromCoffeeSpoonsToOunces = (amount: number): number =>
+	amount / 0.944984;
+
+export const convertFromOuncesToGrams = (amount: number): number =>
+	amount * 28.34952;
+
+export const convertFromCoffeeSpoonsToGrams = (amount: number): number =>
+	amount * 30;
