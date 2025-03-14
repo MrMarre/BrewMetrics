@@ -5,7 +5,7 @@ import {
 	BREW_METHOD_DEFAULTS,
 	type BrewDefaults,
 } from "@/constants/brewDefaults";
-import { convertWater } from "@/utils/unitConversion";
+import { convertWater, reverseConvertWater } from "@/utils/unitConversion";
 
 export default function Calculator() {
 	const [brewMethod, setBrewMethod] = useState("Pour-over");
@@ -26,13 +26,13 @@ export default function Calculator() {
 	const coffeeUnits = ["grams", "ounces", "teaspoons", "tablespoons"];
 	const waterUnits = ["grams", "milliliters", "liters", "fluid ounces"];
 
-	const brewDefaults: BrewDefaults =
-		BREW_METHOD_DEFAULTS[brewMethod] || BREW_METHOD_DEFAULTS["Pour-over"];
-
 	const [showMoreBrewMethods, setShowMoreBrewMethods] = useState(false);
 	const displayedBrewMethods = showMoreBrewMethods
 		? [...defaultBrewMethods, ...extraBrewMethods]
 		: defaultBrewMethods;
+
+	const brewDefaults: BrewDefaults =
+		BREW_METHOD_DEFAULTS[brewMethod] || BREW_METHOD_DEFAULTS["Pour-over"];
 
 	// preset values for different brew methods
 	const ratioRange = useMemo<RatioRange>(() => {
@@ -48,18 +48,63 @@ export default function Calculator() {
 	//?? Utils! Initialize wateramount based on defaults/constants
 	const roundToHalf = (num: number) => Math.round(num * 2) / 2;
 
-	const [waterPerServing, setWaterPerServing] = useState(
+	const [waterPerServing, setWaterPerServing] = useState<number>(
 		brewDefaults.waterPerServing,
 	);
 
 	const [waterAmount, setWaterAmount] = useState(brewDefaults.waterPerServing);
 	const [coffeeAmount, setCoffeeAmount] = useState(waterAmount / strength);
+
+	//To handle raw text input
+	const displayPrecision = waterUnit === "liters" ? 2 : undefined;
+	const [waterInput, setWaterInput] = useState(
+		convertWater(waterPerServing, waterUnit, displayPrecision).toString(),
+	);
+	const handleWaterInputChange = (raw: string) => {
+		// Remove all leading zeros (but keep the "0" if it's the only character)
+		const sanitized = raw.replace(/^0+(?=\d)/, "");
+		setWaterInput(sanitized);
+		if (sanitized !== "") {
+			const num = Number(sanitized);
+			if (!Number.isNaN(num)) {
+				setWaterPerServing(reverseConvertWater(num, waterUnit));
+			}
+		}
+	};
+
+	// const handleWaterBlur = () => {
+	// 	const parsed = Number(waterInput);
+	// 	if (!Number.isNaN(parsed)) {
+	// 		if (waterUnit === "liters") {
+	// 			// Snap to a multiple of 0.05 (allowed increments: 0.5, 1.0 etc.)
+	// 			const valid = Math.round(parsed * 2) / 2;
+	// 			// Update the base value (in ml) using reverseConvertWater, then update the input display
+	// 			// setWaterPerServing(reverseConvertWater(valid, waterUnit));
+	// 			setWaterInput(valid.toFixed(1));
+	// 		} else {
+	// 			setWaterPerServing(reverseConvertWater(parsed, waterUnit));
+	// 			setWaterInput(
+	// 				convertWater(
+	// 					reverseConvertWater(parsed, waterUnit),
+	// 					waterUnit,
+	// 				).toString(),
+	// 			);
+	// 		}
+	// 	} else {
+	// 		// If input is invalid, revert to the proper converted value
+	// 		setWaterInput(convertWater(waterPerServing, waterUnit).toString());
+	// 	}
+	// };
 	//?? state and effect for taking customization of base unit into account
 
 	// When servings change, update waterAmount.
 	useEffect(() => {
 		setWaterAmount(waterPerServing * servings);
 	}, [servings, waterPerServing]);
+
+	useEffect(() => {
+		setWaterPerServing(brewDefaults.waterPerServing);
+	}, [brewDefaults.waterPerServing]);
 
 	// When waterAmount or strength changes, update coffeeAmount.
 	useEffect(() => {
@@ -191,76 +236,88 @@ export default function Calculator() {
 							{showCustomize ? "Hide" : "Adjust volume per serving"}
 						</button>
 					</div>
-				</section>
 
-				{/* 5. Customize Water and Coffee on conditional */}
-				{showCustomize && (
-					<section className="p-4 border rounded-lg w-full max-w-md">
-						<h2 className="text-2xl mb-4">Customize Amounts</h2>
-						<div className="flex flex-col gap-4">
-							<div>
-								<label htmlFor="water-amount" className="block mb-1">
-									Water per serving ({waterUnit})
-								</label>
-								<div className="flex items-center gap-2">
-									<button
-										type="button"
-										onClick={() =>
-											setWaterPerServing(Math.max(0, waterPerServing - 10))
-										}
-										className="px-3 py-1 border rounded"
-									>
-										-
-									</button>
-									<input
-										id="water-amount"
-										type="number"
-										value={waterPerServing}
-										onChange={(e) => setWaterPerServing(Number(e.target.value))}
-										className="w-24 text-center border rounded"
-									/>
-									<button
-										type="button"
-										onClick={() => setWaterPerServing(waterPerServing + 10)}
-										className="px-3 py-1 border rounded"
-									>
-										+
-									</button>
+					{/* 5. Customize Water and Coffee on conditional */}
+					{showCustomize && (
+						<div className="mt-4">
+							<h2 className="text-2xl mb-4">Customize Unit Size</h2>
+							<div className="flex flex-col gap-4">
+								<div>
+									<label htmlFor="water-amount" className="block mb-1">
+										Water per serving ({waterUnit})
+									</label>
+									<div className="flex items-center gap-2">
+										<button
+											type="button"
+											onClick={() =>
+												setWaterPerServing(Math.max(0, waterPerServing - 10))
+											}
+											className="px-3 py-1 border rounded"
+										>
+											-
+										</button>
+										<input
+											id="water-per-serving"
+											type="number"
+											value={
+												convertWater(waterPerServing ?? 0, waterUnit) || ""
+											}
+											onChange={(e) => {
+												e.target.value === ""
+													? waterPerServing
+													: setWaterPerServing(
+															reverseConvertWater(
+																Number(e.target.value),
+																waterUnit,
+															),
+														);
+											}}
+											// onBlur={handleWaterBlur}
+											className="w-24 text-center border rounded"
+										/>
+										<button
+											type="button"
+											onClick={() => setWaterPerServing(waterPerServing + 10)}
+											className="px-3 py-1 border rounded"
+										>
+											+
+										</button>
+									</div>
 								</div>
-							</div>
-							<div>
-								<label htmlFor="coffee-amount" className="block mb-1">
-									Coffee Amount ({coffeeUnit})
-								</label>
-								<div className="flex items-center gap-2">
-									<button
-										type="button"
-										onClick={() =>
-											setCoffeeAmount(Math.max(0, coffeeAmount - 1))
-										}
-										className="px-3 py-1 border rounded"
-									>
-										-
-									</button>
-									<input
-										id="coffee-amount"
-										type="number"
-										value={coffeeAmount}
-										onChange={(e) => setCoffeeAmount(Number(e.target.value))}
-										className="w-24 text-center border rounded"
-									/>
-									<button
-										type="button"
-										onClick={() => setCoffeeAmount(coffeeAmount + 1)}
-										className="px-3 py-1 border rounded"
-									>
-										+
-									</button>
+								<div>
+									<label htmlFor="coffee-amount" className="block mb-1">
+										Coffee Amount ({coffeeUnit})
+									</label>
+									<div className="flex items-center gap-2">
+										<button
+											type="button"
+											onClick={() =>
+												setCoffeeAmount(Math.max(0, coffeeAmount - 1))
+											}
+											className="px-3 py-1 border rounded"
+										>
+											-
+										</button>
+										<input
+											id="coffee-amount"
+											type="number"
+											value={Number(coffeeAmount.toFixed(2))}
+											onChange={(e) => setCoffeeAmount(Number(e.target.value))}
+											className="w-24 text-center border rounded"
+										/>
+										<button
+											type="button"
+											onClick={() => setCoffeeAmount(coffeeAmount + 1)}
+											className="px-3 py-1 border rounded"
+										>
+											+
+										</button>
+									</div>
 								</div>
 							</div>
 						</div>
-					</section>
-				)}
+					)}
+				</section>
 
 				{/* 6. Display Calculated Values */}
 				<section className="p-4 border rounded-lg w-full max-w-md">
@@ -269,10 +326,10 @@ export default function Calculator() {
 						<p>
 							Based on your selections, your recipe is:{" "}
 							<strong>
-								{`${roundToHalf(coffeeAmount)} ${coffeeUnit} of coffee for ${convertWater(
+								{`${Number(coffeeAmount.toFixed(1))} ${coffeeUnit} of coffee for ${convertWater(
 									waterAmount,
 									waterUnit,
-								)} ${waterUnit} of water`}
+								)} ${waterUnit} of water.`}
 							</strong>
 						</p>
 					</div>
