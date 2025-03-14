@@ -130,6 +130,9 @@ export default function Calculator() {
 									label="Coffee Amount in"
 									dependantValue={watch("coffeeUnit")}
 									incrementValue={1}
+									valueFormatter={(value, dependantValue) =>
+										Number(value).toFixed(2)
+									}
 								/>
 							</div>
 						</div>
@@ -137,6 +140,7 @@ export default function Calculator() {
 				</SectionCard>
 
 				{/* 6. Display Calculated Values */}
+
 				<SectionCard>
 					<h2 className="text-2xl mb-4">Calculated Values</h2>
 					<div className="flex flex-col gap-4">

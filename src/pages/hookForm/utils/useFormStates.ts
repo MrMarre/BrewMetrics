@@ -58,14 +58,28 @@ const useFormStates = () => {
 	}, [waterPerServing, setWaterAmount, servings, coffeeAmount]);
 
 	useEffect(() => {
-		const currCoffeeAmount = getValues("coffeeAmount") ?? 0;
+		if (waterPerServing && strength && servings) {
+			const baseCoffee = waterPerServing / strength;
+			const totalCoffee = baseCoffee * servings;
+			const convertedCoffee = convertCoffeeUnit(
+				totalCoffee,
+				coffeeUnit ?? "Grams",
+			);
+			setValue("coffeeAmount", convertedCoffee);
+		}
+	}, [coffeeUnit, servings, strength, waterPerServing]);
 
-		const newCoffeeAmount = convertCoffeeUnit(
-			currCoffeeAmount * (servings ?? 0),
-			coffeeUnit ?? "Grams",
-		);
-		setValue("coffeeAmount", newCoffeeAmount);
-	}, [coffeeUnit, servings]);
+	// useEffect(() => {
+
+	// 	const currCoffeeAmount = getValues("coffeeAmount") ?? 0;
+
+	// 	const newCoffeeAmount = convertCoffeeUnit(
+	// 		currCoffeeAmount * (servings ?? 0),
+	// 		coffeeUnit ?? "Grams",
+	// 	);
+	// 	setValue("coffeeAmount", newCoffeeAmount);
+	// }, [coffeeUnit, servings]);
+
 	// useEffect(() => {
 	// 	if (coffeeUnit && coffeeAmount) {
 	// 		setCoffeeUnit(convertCoffeeUnit(coffeeUnit, coffeeAmount));

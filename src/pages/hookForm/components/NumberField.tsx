@@ -9,9 +9,11 @@ type Props<TField extends FieldValues> = {
 	label?: string;
 	incrementValue: number;
 	onChangeHandler?: (value: number, dependantValue: string) => void;
-	valueFormatter?: (value: number, dependantValue: string) => number;
+	valueFormatter?: (value: number, dependantValue: string) => number | string;
 	dependantValue?: string;
 	minValue?: number;
+	ratioRangeMin?: number;
+	ratioRangeMax?: number;
 };
 
 const NumberField = <TField extends FieldValues>({
@@ -23,6 +25,8 @@ const NumberField = <TField extends FieldValues>({
 	dependantValue,
 	incrementValue,
 	minValue = 1,
+	ratioRangeMin,
+	ratioRangeMax,
 }: Props<TField>) => {
 	return (
 		<Controller
@@ -39,7 +43,7 @@ const NumberField = <TField extends FieldValues>({
 							<button
 								type="button"
 								onClick={() =>
-									onChange(Math.max(minValue, Number(value) - incrementValue))
+									onChange(Math.max(0, Number(value) - incrementValue))
 								}
 								className="px-3 py-1 border rounded"
 							>
