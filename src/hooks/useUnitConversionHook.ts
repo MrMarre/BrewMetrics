@@ -9,34 +9,36 @@ import {
 import { useState } from "react";
 
 const useUnitConversionHook = () => {
-	const [unit, setUnit] = useState("grams");
+	// const [unit, setUnit] = useState("grams");
 
 	function convertCoffeeUnit(
 		amount: number,
 		toUnit: string,
+		fromUnit: string,
 		precision?: number,
 	): number {
-		console.log("unit", unit);
+		// console.log("unit", unit);
 
-		const lastUnitUsed = unit;
-		setUnit(toUnit);
+		// const lastUnitUsed = unit;
+		// setUnit(toUnit);
+		if (fromUnit === toUnit) return amount;
 
-		if (toUnit === "coffee spoons" && lastUnitUsed === "grams") {
+		if (fromUnit === "coffee spoons" && toUnit === "grams") {
 			return convertFromGramsToCoffeeSpoons(amount);
 		}
-		if (toUnit === "ounces" && lastUnitUsed === "grams") {
+		if (fromUnit === "ounces" && toUnit === "grams") {
 			return convertFromGramsToOunces(amount);
 		}
-		if (toUnit === "coffee spoons" && lastUnitUsed === "ounces") {
+		if (fromUnit === "coffee spoons" && toUnit === "ounces") {
 			return convertFromOuncesToCoffeeSpoons(amount);
 		}
-		if (toUnit === "ounces" && lastUnitUsed === "coffee spoons") {
+		if (fromUnit === "ounces" && toUnit === "coffee spoons") {
 			return convertFromCoffeeSpoonsToOunces(amount);
 		}
-		if (toUnit === "grams" && lastUnitUsed === "ounces") {
+		if (fromUnit === "grams" && toUnit === "ounces") {
 			return convertFromOuncesToGrams(amount);
 		}
-		if (toUnit === "grams" && lastUnitUsed === "coffee spoons") {
+		if (fromUnit === "grams" && toUnit === "coffee spoons") {
 			return convertFromCoffeeSpoonsToGrams(amount);
 		}
 
