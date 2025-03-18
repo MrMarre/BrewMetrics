@@ -17,10 +17,7 @@ const useUnitConversionHook = () => {
 		fromUnit: string,
 		precision?: number,
 	): number {
-		// console.log("unit", unit);
-
-		// const lastUnitUsed = unit;
-		// setUnit(toUnit);
+		
 		if (fromUnit === toUnit) return amount;
 
 		if (fromUnit === "coffee spoons" && toUnit === "grams") {

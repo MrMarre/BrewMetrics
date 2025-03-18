@@ -66,6 +66,16 @@ const useFormStates = () => {
 	}, [waterPerServing, setWaterAmount, servings, coffeeAmount]);
 
 	useEffect(() => {
+		const methodKey = (brewMethod ??
+			"Pour-over") as keyof typeof BREW_METHOD_RANGES;
+		const ratio = BREW_METHOD_RANGES[methodKey];
+		const defaultWater = BREW_METHOD_DEFAULTS[methodKey];
+
+		setValue("waterPerServing", defaultWater.waterPerServing);
+		setValue("strength", ratio.baseValue);
+	}, [brewMethod, setValue]);
+
+	useEffect(() => {
 		if (waterPerServing && strength && servings) {
 			const baseCoffee = waterPerServing / strength;
 			const totalCoffee = baseCoffee * servings;
@@ -74,14 +84,7 @@ const useFormStates = () => {
 				"grams",
 				coffeeUnit ?? "grams",
 			);
-			console.log("Full conversion effect:", {
-				waterPerServing,
-				strength,
-				servings,
-				baseCoffee,
-				totalCoffee,
-				convertedCoffee,
-			});
+
 			setValue("coffeeAmount", convertedCoffee);
 		}
 	}, [coffeeUnit, servings, strength, waterPerServing]);
