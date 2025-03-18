@@ -1,5 +1,6 @@
 "use client";
 
+import { Button } from "@/components/ui/button";
 import React from "react";
 import { Control, FieldValues, Path, Controller } from "react-hook-form";
 
@@ -40,15 +41,16 @@ const NumberField = <TField extends FieldValues>({
 							{label} {dependantValue}
 						</label>
 						<div className="flex items-center gap-2">
-							<button
+							<Button
 								type="button"
+								variant="outline"
 								onClick={() =>
 									onChange(Math.max(0, Number(value) - incrementValue))
 								}
 								className="px-3 py-1 border rounded"
 							>
 								-
-							</button>
+							</Button>
 							<input
 								ref={ref}
 								id={name}
@@ -77,7 +79,8 @@ const NumberField = <TField extends FieldValues>({
 								onBlur={onBlur}
 								className="w-24 text-center border rounded"
 							/>
-							<button
+							<Button
+								variant="outline"
 								type="button"
 								onClick={() =>
 									onChange(Math.max(0, Number(value) + incrementValue))
@@ -85,7 +88,7 @@ const NumberField = <TField extends FieldValues>({
 								className="px-3 py-1 border rounded"
 							>
 								+
-							</button>
+							</Button>
 						</div>
 					</div>
 				);
