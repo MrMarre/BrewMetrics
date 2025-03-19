@@ -2,6 +2,7 @@
 
 import React, { ReactNode } from "react";
 import { Control, Controller, FieldValues, Path } from "react-hook-form";
+import { Slider } from "@/components/ui/slider";
 
 type Props<TField extends FieldValues> = {
 	control: Control<TField>;
@@ -38,9 +39,28 @@ const RangeInput = <TField extends FieldValues>({
 				const { onChange, value } = field;
 				// const { error } = fieldState;
 				return (
-					<section className="p-4 border rounded-lg w-full max-w-md">
+					<>
 						{label}
-						<input
+						<Slider
+             			 value={[Number(value)]}
+              			min={minValue}
+              			max={maxValue}
+              			step={step}
+              			onValueChange={(vals) => onChange(vals[0])}
+            			>
+						</Slider>
+						<div className="mt-2 text-sm">Current ratio is 1:{value}</div>
+						
+					</>
+				);
+			}}
+		/>
+	);
+};
+
+export default RangeInput;
+
+{/* <input
 							type="range"
 							onChange={onChange}
 							value={value}
@@ -49,13 +69,4 @@ const RangeInput = <TField extends FieldValues>({
 							step={step}
 							className="w-full"
 						/>
-						<div className="mt-2 text-sm">Current ratio is 1:{value}</div>
-						{/* {error && <p className="text-red-500 text-sm">{error.message}</p>} */}
-					</section>
-				);
-			}}
-		/>
-	);
-};
-
-export default RangeInput;
+						<div className="mt-2 text-sm">Current ratio is 1:{value}</div> */}
