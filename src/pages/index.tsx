@@ -25,10 +25,11 @@ export default function Home() {
 				<div className="flex gap-4 items-center  flex-col sm:flex-row font-semibold">
 					<Link
 						href="/calculator"
-						className="rounded-full border border-solid transition-colors bg-[--primary] flex items-center justify-center  gap-2 bg-[--accent] dark:hover:bg-[#ccc] text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5"
+						className="rounded-full border border-solid transition-colors bg-[var(--accent)] flex items-center justify-center  gap-2 bg-[--accent] dark:hover:bg-[#ccc] text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5"
 					>
 						Join me
 					</Link>
+					
 				</div>
 				
 			</main>
