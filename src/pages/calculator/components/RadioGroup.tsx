@@ -2,6 +2,7 @@
 
 import React, { useState, ReactNode } from "react";
 import { Control, Controller, FieldValues, Path } from "react-hook-form";
+import cn from "clsx";
 
 type Props<TField extends FieldValues> = {
 	control: Control<TField>;
@@ -11,7 +12,7 @@ type Props<TField extends FieldValues> = {
 	limitAmount?: number;
 };
 
-const RadioButtons = <TField extends FieldValues>({
+const RadioGroup = <TField extends FieldValues>({
 	control,
 	name,
 	label,
@@ -59,7 +60,10 @@ const RadioButtons = <TField extends FieldValues>({
 										value={option}
 										checked={value === option}
 										onChange={() => onChange(option)}
-										className="mr-2"
+										className={cn("appearance-none mr-2 w-4 h-4 rounded-full border transition-colors",
+											"border-gray-300 bg-white",
+                    					"hover:border-amber-600",
+   										 "checked:bg-violet-400 checked:border-amber-600")}
 									/>
 									{option}
 								</label>
@@ -87,4 +91,4 @@ const RadioButtons = <TField extends FieldValues>({
 	);
 };
 
-export default RadioButtons;
+export default RadioGroup;

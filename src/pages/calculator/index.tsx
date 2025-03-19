@@ -1,30 +1,14 @@
 import Head from "next/head";
-import { useEffect, useMemo, useState } from "react";
-import { BREW_METHOD_RANGES, type RatioRange } from "@/constants/brewRanges";
-import {
-	BREW_METHOD_DEFAULTS,
-	type BrewDefaults,
-} from "@/constants/brewDefaults";
+import { useEffect, useState } from "react";
 import { convertWater, reverseConvertWater } from "@/utils/unitConversion";
 import NumberField from "./components/NumberField";
 import useFormStates from "./utils/useFormStates";
-import RadioButtons from "./components/RadioButtons";
+import RadioGroup from "./components/RadioGroup";
 import RangeInput from "./components/RatioRange";
 import SectionCard from "./components/SectionCard";
-
-const defaultBrewMethods = [
-	"Pour-over",
-	"French press",
-	"Auto drip",
-	"V60",
-	"Moka Pot",
-	"Chemex",
-	"Siphon",
-	"Cold Brew",
-	"AeroPress",
-];
-const coffeeUnits = ["grams", "ounces", "coffee spoons"];
-const waterUnits = ["grams", "milliliters", "liters", "fluid ounces"];
+import { Heading } from "@/components/ui/heading";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { defaultBrewMethods, coffeeUnits, waterUnits } from "@/constants/brewOptions";
 
 export default function Calculator() {
 	const {
@@ -42,7 +26,7 @@ export default function Calculator() {
 	return (
 		<div>
 			<Head>
-				<title>Coffee to Water Ratio explained</title>
+				<title>Optimal Brew Ratio Calculator | Coffee to Water Ratio Explained</title>
 			</Head>
 			<button
 				className="px-3 py-1 border rounded"
@@ -53,13 +37,15 @@ export default function Calculator() {
 			</button>
 
 			<form className="container mx-auto p-8 flex flex-col gap-8 items-center">
-				<h1 className="text-3xl font-bold text-center">React-hook-form-calc</h1>
+				<Heading as="h1" className="text-3xl">Optimal Brew Ratio Calculator</Heading>
 				<SectionCard>
 					{/* 1. Select Brew Method */}
-					<RadioButtons
+					<RadioGroup
 						control={control}
 						name="brewMethod"
-						label={<h2 className="text-2xl mb-4">Select Brewing Method</h2>}
+						label={<Heading as="h2" className="text-2xl mb-6">
+							Select Brew Method
+						  </Heading>}
 						options={defaultBrewMethods}
 						limitAmount={4}
 					/>
@@ -67,7 +53,9 @@ export default function Calculator() {
 				{/* 2. Adjust Strength */}
 				<SectionCard>
 					<RangeInput
-						label={<h2 className="text-2xl mb-4">Adjust Strength</h2>}
+						label={<Heading as="h2" className="text-2xl mb-6">
+							Adjust Strength
+						  </Heading>}
 						control={control}
 						name="strength"
 						minValue={ratioRange.min}
@@ -77,26 +65,26 @@ export default function Calculator() {
 
 				{/* 3. Choose Units */}
 				<SectionCard>
-					<h2 className="text-2xl mb-4">Choose Units</h2>
+				<Heading as="h2" className="text-2xl mb-4">Select Units</Heading>
 
-					<RadioButtons
+					<RadioGroup
 						control={control}
 						name="coffeeUnit"
-						label={<h3 className="text-xl my-2">Ground Coffee</h3>}
+						label={<Heading as="h2" className="text-xl text-left my-2">Ground Coffee</Heading>}
 						options={coffeeUnits}
 					/>
 
-					<RadioButtons
+					<RadioGroup
 						control={control}
 						name="waterUnit"
-						label={<h3 className="text-xl my-2">Water</h3>}
+						label={<Heading as="h2" className="text-xl text-left my-2">Water</Heading>}
 						options={waterUnits}
 					/>
 				</SectionCard>
 
 				{/* 4. Choose Number of Servings */}
 				<SectionCard>
-					<h2 className="text-2xl mb-4">Decide on number of servings</h2>
+					<Heading as="h2" className="text-2xl mb-4">Decide on number of servings</Heading>
 					<div className="flex items-center gap-4">
 						<NumberField control={control} name="servings" incrementValue={1} />
 
@@ -113,7 +101,7 @@ export default function Calculator() {
 					{/* 5. Customize Water and Coffee on conditional */}
 					{showCustomize && (
 						<div className="mt-4">
-							<h2 className="text-2xl mb-4">Customize Unit Size</h2>
+							<Heading className="text-xl text-left mb-2">Customize Cup Size</Heading>
 							<div className="flex flex-col gap-4">
 								<NumberField
 									control={control}
@@ -140,16 +128,47 @@ export default function Calculator() {
 				</SectionCard>
 
 				{/* 6. Display Calculated Values */}
-
 				<SectionCard>
-					<h2 className="text-2xl mb-4">Calculated Values</h2>
+				<div className="grid gap-4 grid-cols-1 sm:grid-cols-2">
+  					<Card>
+    					<CardHeader>
+      						<CardTitle>Coffee</CardTitle>
+    					</CardHeader>
+    					<CardContent>
+     					 <p>{`${coffeeAmount?.toFixed(2)} ${coffeeUnit}`}</p>
+    					</CardContent>
+  					</Card>
+  					<Card>
+   						 <CardHeader>
+     						<CardTitle>Water</CardTitle>
+    					</CardHeader>
+    					<CardContent>
+						<p>
+							{`${convertWater(
+							waterAmount,
+							watch("waterUnit") ?? "",
+							2,
+							)} ${watch("waterUnit")}`}
+						</p>
+    					</CardContent>
+  					</Card>
+				</div>
+					
+				</SectionCard>
+			</form>
+		</div>
+	);
+}
+
+
+{/* <Heading className="text-2xl mb-4">Calculated Values</Heading>
 					<div className="flex flex-col gap-4">
 						<div className="p-4 bg-gray-100 rounded">
 							<h3 className="text-lg font-bold">Coffee</h3>
 							<p>{`${coffeeAmount?.toFixed(2)} ${coffeeUnit}`}</p>
 						</div>
 						<div className="p-4 bg-gray-100 rounded">
-							<h3 className="text-lg font-bold">Water</h3>
+							<Heading className="text-xl text-left font-bold">Water</Heading>
 							<p>
 								{`${convertWater(
 									waterAmount,
@@ -158,13 +177,7 @@ export default function Calculator() {
 								)} ${watch("waterUnit")}`}
 							</p>
 						</div>
-					</div>
-				</SectionCard>
-			</form>
-		</div>
-	);
-}
-
+					</div> */}
 {
 	/* <div className="p-4 bg-gray-100 rounded">
 						<p>
