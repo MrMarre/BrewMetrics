@@ -1,3 +1,4 @@
+"use client";
 import Head from "next/head";
 import { useState } from "react";
 import { convertWater, reverseConvertWater } from "@/utils/unitConversion";

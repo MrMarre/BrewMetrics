@@ -1,3 +1,4 @@
+"use client";
 import { BREW_METHOD_DEFAULTS } from "@/constants/brewDefaults";
 import { useForm } from "react-hook-form";
 import { useEffect, useMemo, useState } from "react";
@@ -99,8 +100,6 @@ const useFormStates = () => {
     servings,
     coffeeAmount,
     coffeeUnit,
-    convertCoffeeUnit,
-    setValue,
   };
 };
 
