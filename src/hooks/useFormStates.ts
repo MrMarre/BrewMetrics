@@ -1,3 +1,4 @@
+"use client";
 import { BREW_METHOD_DEFAULTS } from "@/constants/brewDefaults";
 import { useForm } from "react-hook-form";
 import { useEffect, useMemo, useState } from "react";
@@ -73,6 +74,7 @@ const useFormStates = () => {
     setValue("strength", ratio.baseValue);
   }, [brewMethod, setValue]);
 
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(() => {
     if (waterPerServing && strength && servings) {
       const baseCoffee = waterPerServing / strength;
@@ -98,8 +100,6 @@ const useFormStates = () => {
     servings,
     coffeeAmount,
     coffeeUnit,
-    convertCoffeeUnit,
-    setValue,
   };
 };
 

@@ -1,11 +1,13 @@
+"use client";
 import Head from "next/head";
 import { useState } from "react";
 import { convertWater, reverseConvertWater } from "@/utils/unitConversion";
-import NumberField from "./components/NumberField";
-import useFormStates from "./utils/useFormStates";
-import RadioGroup from "./components/RadioGroup";
-import RangeInput from "./components/RatioRange";
-import SectionCard from "./components/SectionCard";
+
+import useFormStates from "../../hooks/useFormStates";
+import { RadioGroup } from "@/components/calculations";
+import { RangeInput } from "@/components/calculations";
+import { NumberField } from "@/components/calculations";
+import SectionCard from "../../components/common/SectionCard";
 import { Heading } from "@/components/ui/heading";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import {
