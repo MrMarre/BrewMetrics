@@ -41,7 +41,7 @@ const NumberField = <TField extends FieldValues>({
                 onClick={() =>
                   onChange(Math.max(1, Number(value) - incrementValue))
                 }
-                className="px-3 py-1 border rounded"
+                className="px-3 py-1 border rounded bg-[var(--tertiary)]"
               >
                 -
               </Button>
@@ -77,7 +77,7 @@ const NumberField = <TField extends FieldValues>({
                 onClick={() =>
                   onChange(Math.max(0, Number(value) + incrementValue))
                 }
-                className="px-3 py-1 border rounded"
+                className="px-3 py-1 border rounded bg-[var(--tertiary)]"
               >
                 +
               </Button>

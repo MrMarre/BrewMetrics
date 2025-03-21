@@ -27,5 +27,9 @@ export function CardTitle({ className, children }: CardProps) {
 }
 
 export function CardContent({ className, children }: CardProps) {
-  return <div className={cn("text-md text-gray-700", className)}>{children}</div>;
+  return (
+    <div className={cn("text-md font-medium text-gray-700", className)}>
+      {children}
+    </div>
+  );
 }

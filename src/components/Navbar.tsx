@@ -14,7 +14,6 @@ export function NavBar() {
         toolsRef.current &&
         !toolsRef.current.contains(event.target as Node)
       ) {
-        console.log("hej");
         setToolsOpen(false);
       }
     }
@@ -34,7 +33,7 @@ export function NavBar() {
             <li>
               <Link
                 href="/"
-                className="px-5 py-3 rounded-md transition-colors duration-300 hover:bg-[var(--accent)]"
+                className="px-5 py-3 rounded-md transition-colors duration-300 hover-[var(--hover)]"
               >
                 Home
               </Link>

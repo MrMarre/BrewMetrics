@@ -15,6 +15,7 @@ import {
   coffeeUnits,
   waterUnits,
 } from "@/constants/brewOptions";
+import { Button } from "@/components/ui/button";
 
 export default function Calculator() {
   const {
@@ -30,22 +31,22 @@ export default function Calculator() {
   const [showCustomize, setShowCustomize] = useState(false);
 
   return (
-    <div>
+    <div className="overscroll-contain">
       <Head>
         <title>
           Optimal Brew Ratio Calculator | Coffee to Water Ratio Explained
         </title>
       </Head>
-      <button
+      <Button
         className="px-3 py-1 border rounded"
         type="button"
+        variant="outline"
         onClick={handleResetClick}
       >
         reset all
-      </button>
-
+      </Button>
       <form className="container mx-auto p-8 flex flex-col gap-8 items-center">
-        <Heading as="h1" className="text-3xl">
+        <Heading as="h1" className="text-3xl font-serif">
           Optimal Brew Ratio Calculator
         </Heading>
         <SectionCard>
@@ -118,7 +119,7 @@ export default function Calculator() {
             <button
               type="button"
               onClick={() => setShowCustomize((prev) => !prev)}
-              className=" px-3 py-1 mx-3 border rounded bg-[var(--tertiary)] text-[var(--foreground)] transition-colors duration-300 hover:bg-[var(--accent)]"
+              className=" px-3 py-1 mx-3 border rounded bg-[var(--tertiary)] text-[var(--foreground)] transition-colors duration-300 hover:bg-violet-300"
             >
               {showCustomize ? "Hide" : "Adjust serving size"}
             </button>
@@ -183,37 +184,4 @@ export default function Calculator() {
       </form>
     </div>
   );
-}
-
-{
-  /* <Heading className="text-2xl mb-4">Calculated Values</Heading>
-					<div className="flex flex-col gap-4">
-						<div className="p-4 bg-gray-100 rounded">
-							<h3 className="text-lg font-bold">Coffee</h3>
-							<p>{`${coffeeAmount?.toFixed(2)} ${coffeeUnit}`}</p>
-						</div>
-						<div className="p-4 bg-gray-100 rounded">
-							<Heading className="text-xl text-left font-bold">Water</Heading>
-							<p>
-								{`${convertWater(
-									waterAmount,
-									watch("waterUnit") ?? "",
-									2,
-								)} ${watch("waterUnit")}`}
-							</p>
-						</div>
-					</div> */
-}
-{
-  /* <div className="p-4 bg-gray-100 rounded">
-						<p>
-							Based on your selections, your recipe is:{" "}
-							<strong>
-								{`${Number((watch("coffeeAmount") ?? 0) * (watch("servings") ?? 0)).toFixed(1)} ${watch("coffeeUnit")} of coffee for ${convertWater(
-									waterAmount,
-									watch("waterUnit") ?? "",
-								)} ${watch("waterUnit")} of water.`}
-							</strong>
-						</p>
-					</div> */
 }
