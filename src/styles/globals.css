@@ -5,11 +5,12 @@
 @custom-variant dark (&:is(.dark *));
 
 :root {
-  --background: #fbf4ee;
+  --background: #f9f1e9;
   --primary: #256d7b;
   --secondary: #ffffff;
+  --tertiary: #ceccf6;
   --accent: #33ac92;
-  --accent-light: #2ac3a2;
+  --accent-light: #1cc29e;
 
   --foreground: #171717;
 

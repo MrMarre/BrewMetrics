@@ -26,7 +26,7 @@ export function NavBar() {
   }, []);
 
   return (
-    <header className="border-b px-4 bg-[var(--accent-light)]">
+    <header className="border-b px-4 bg-[var(--tertiary)]">
       <div className="flex items-center justify-between  pt-2 pb-2 gap-2">
         {/* Desktop Navigation */}
         <div className="hidden sm:block">
