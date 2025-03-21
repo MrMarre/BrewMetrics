@@ -73,6 +73,7 @@ const useFormStates = () => {
     setValue("strength", ratio.baseValue);
   }, [brewMethod, setValue]);
 
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(() => {
     if (waterPerServing && strength && servings) {
       const baseCoffee = waterPerServing / strength;
@@ -85,14 +86,7 @@ const useFormStates = () => {
 
       setValue("coffeeAmount", convertedCoffee);
     }
-  }, [
-    coffeeUnit,
-    servings,
-    strength,
-    waterPerServing,
-    setValue,
-    convertCoffeeUnit,
-  ]);
+  }, [coffeeUnit, servings, strength, waterPerServing]);
 
   return {
     watch,
