@@ -85,7 +85,14 @@ const useFormStates = () => {
 
       setValue("coffeeAmount", convertedCoffee);
     }
-  }, [coffeeUnit, servings, strength, waterPerServing]);
+  }, [
+    coffeeUnit,
+    servings,
+    strength,
+    waterPerServing,
+    setValue,
+    convertCoffeeUnit,
+  ]);
 
   return {
     watch,
