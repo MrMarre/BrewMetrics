@@ -25,19 +25,9 @@ const RangeInput = <TField extends FieldValues>({
     <Controller
       control={control}
       name={name}
-      // rules={{
-      // 	min: {
-      // 		value: minValue,
-      // 		message: `Value should not be lower than ${minValue}.`,
-      // 	},
-      // 	max: {
-      // 		value: maxValue,
-      // 		message: `Value should not exceed ${maxValue}.`,
-      // 	},
-      // }}
-      render={({ field, fieldState }) => {
+      render={({ field }) => {
         const { onChange, value } = field;
-        // const { error } = fieldState;
+
         return (
           <>
             {label}

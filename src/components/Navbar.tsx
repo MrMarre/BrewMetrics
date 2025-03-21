@@ -1,15 +1,12 @@
 import React, { useEffect, useRef, useState } from "react";
 
 import Link from "next/link";
-import { useRouter } from "next/router";
 import MobileDrawer from "./MobileDrawer";
-import { CoffeeIcon, Hammer, House } from "lucide-react";
+import { CoffeeIcon, Hammer } from "lucide-react";
 
 export function NavBar() {
-  const [mobileOpen, setMobileOpen] = useState(false);
   const [toolsOpen, setToolsOpen] = useState(false);
   const toolsRef = useRef<HTMLLIElement>(null);
-  const router = useRouter();
 
   useEffect(() => {
     function handleClickOutside(event: MouseEvent) {

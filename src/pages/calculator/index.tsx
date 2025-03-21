@@ -1,5 +1,5 @@
 import Head from "next/head";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { convertWater, reverseConvertWater } from "@/utils/unitConversion";
 import NumberField from "./components/NumberField";
 import useFormStates from "./utils/useFormStates";
@@ -34,13 +34,13 @@ export default function Calculator() {
           Optimal Brew Ratio Calculator | Coffee to Water Ratio Explained
         </title>
       </Head>
-      {/* <button
-				className="px-3 py-1 border rounded"
-				type="button"
-				onClick={handleResetClick}
-			>
-				reset all
-			</button> */}
+      <button
+        className="px-3 py-1 border rounded"
+        type="button"
+        onClick={handleResetClick}
+      >
+        reset all
+      </button>
 
       <form className="container mx-auto p-8 flex flex-col gap-8 items-center">
         <Heading as="h1" className="text-3xl">
@@ -141,9 +141,7 @@ export default function Calculator() {
                   label="Coffee Amount in"
                   dependantValue={watch("coffeeUnit")}
                   incrementValue={1}
-                  valueFormatter={(value, dependantValue) =>
-                    Number(value).toFixed(2)
-                  }
+                  valueFormatter={(value) => Number(value).toFixed(2)}
                 />
               </div>
             </div>
