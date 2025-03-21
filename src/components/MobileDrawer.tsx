@@ -8,9 +8,7 @@ import {
   DrawerTitle,
   DrawerTrigger,
 } from "@/components/ui/drawer";
-import { Button } from "./ui/button";
 import Link from "next/link";
-import { useState } from "react";
 import { ChevronRight, Menu } from "lucide-react";
 
 export default function MobileDrawer() {
