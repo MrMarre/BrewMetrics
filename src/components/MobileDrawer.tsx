@@ -26,7 +26,7 @@ export default function MobileDrawer() {
           <DrawerClose className="flex" asChild>
             <Link
               href="/"
-              className="block w-full text-left px-4 py-2 rounded-md bg-[var(--accent)] "
+              className="block w-full text-left px-4 py-2 rounded-md bg-[var(--accent)]"
             >
               Home <ChevronRight className="ml-auto" />
             </Link>

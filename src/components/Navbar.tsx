@@ -33,7 +33,7 @@ export function NavBar() {
             <li>
               <Link
                 href="/"
-                className="px-5 py-3 rounded-md transition-colors duration-300 hover-[var(--hover)]"
+                className="px-5 py-3 rounded-md transition-colors duration-300 hover:bg-violet-400"
               >
                 Home
               </Link>
@@ -41,7 +41,7 @@ export function NavBar() {
             <li>
               <Link
                 href="/about"
-                className="px-5 py-3 rounded-md transition-colors duration-300 hover:bg-[var(--accent)]"
+                className="px-5 py-3 rounded-md transition-colors duration-300 hover:bg-violet-400"
               >
                 About
               </Link>
@@ -49,7 +49,7 @@ export function NavBar() {
             <li ref={toolsRef} className="relative">
               <button
                 onClick={() => setToolsOpen((prev) => !prev)}
-                className="px-5 py-2.5 rounded-md transition-colors duration-300 hover:bg-[var(--accent)]"
+                className="px-5 py-2.5 rounded-md transition-colors duration-300 hover:bg-violet-400"
               >
                 Tools
               </button>
@@ -72,7 +72,7 @@ export function NavBar() {
                     <li>
                       <Link
                         href="/calculator"
-                        className="block px-4 py-2 transition-colors duration-300 hover:bg-[var(--accent)]"
+                        className="block px-4 py-2 transition-colors duration-300 hover:bg-violet-400"
                       >
                         Brew Ratio Calculator
                       </Link>
