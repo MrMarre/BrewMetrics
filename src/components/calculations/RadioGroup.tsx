@@ -3,6 +3,7 @@
 import React, { useState, ReactNode } from "react";
 import { Control, Controller, FieldValues, Path } from "react-hook-form";
 import cn from "clsx";
+import { Button } from "../ui/button";
 
 type Props<TField extends FieldValues> = {
   control: Control<TField>;
@@ -48,7 +49,7 @@ const RadioGroup = <TField extends FieldValues>({
         return (
           <>
             {label}
-            <div className="flex flex-col gap-2">
+            <div className="flex flex-col gap-2 text-lg">
               {parsedOptions.map((option) => (
                 <label
                   key={option}
@@ -71,21 +72,24 @@ const RadioGroup = <TField extends FieldValues>({
                 </label>
               ))}
               {limitAmount && (
-                <button
+                <Button
                   disabled={buttonIsDisabled}
                   type="button"
+                  variant="outline"
                   onClick={() => {
                     setIsExpanded(!isExpanded);
                     handleExpandClick();
                   }}
-                  className={`px-3 py-1 border rounded ${
-                    buttonIsDisabled ? "text-red-400" : "text-blue-500"
+                  className={`px-3 py-1 border rounded bg-[var(--tertiary)] ${
+                    buttonIsDisabled
+                      ? "text-red-400"
+                      : "text-[var(--foreground)]"
                   }`}
                 >
                   {isExpanded
                     ? "Show less brewing methods"
                     : "Show more brewing methods"}
-                </button>
+                </Button>
               )}
             </div>
           </>

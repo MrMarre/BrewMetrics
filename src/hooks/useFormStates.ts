@@ -53,13 +53,6 @@ const useFormStates = () => {
   useEffect(() => {
     if (waterPerServing && coffeeAmount) {
       const newWaterAmount = (servings ?? 0) * (waterPerServing ?? 0);
-      console.log(
-        "Updating waterAmount:",
-        servings,
-        waterPerServing,
-        "=>",
-        newWaterAmount
-      );
       setWaterAmount(newWaterAmount);
     }
   }, [waterPerServing, setWaterAmount, servings, coffeeAmount]);

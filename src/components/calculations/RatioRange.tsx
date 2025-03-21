@@ -38,7 +38,7 @@ const RangeInput = <TField extends FieldValues>({
               step={step}
               onValueChange={(vals) => onChange(vals[0])}
             ></Slider>
-            <div className="mt-5 text-sm">Current ratio is 1:{value}</div>
+            <div className="mt-5 text-md">Current ratio is 1:{value}</div>
           </>
         );
       }}

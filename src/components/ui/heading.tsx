@@ -7,9 +7,15 @@ export type HeadingProps = {
   children?: React.ReactNode;
 };
 
-export function Heading({ as: Component = "h1", className, children }: HeadingProps) {
+export function Heading({
+  as: Component = "h1",
+  className,
+  children,
+}: HeadingProps) {
   return (
-    <Component className={cn("text-center font-bold text-gray-900 ", className)}>
+    <Component
+      className={cn("text-center font-light text-gray-900 ", className)}
+    >
       {children}
     </Component>
   );
