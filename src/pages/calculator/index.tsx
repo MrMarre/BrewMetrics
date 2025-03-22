@@ -86,17 +86,6 @@ export default function Calculator() {
 
           <RadioGroup
             control={control}
-            name="coffeeUnit"
-            label={
-              <Heading as="h2" className="text-xl text-left my-2">
-                Ground Coffee
-              </Heading>
-            }
-            options={coffeeUnits}
-          />
-
-          <RadioGroup
-            control={control}
             name="waterUnit"
             label={
               <Heading as="h2" className="text-xl text-left my-2">
@@ -104,6 +93,16 @@ export default function Calculator() {
               </Heading>
             }
             options={waterUnits}
+          />
+          <RadioGroup
+            control={control}
+            name="coffeeUnit"
+            label={
+              <Heading as="h2" className="text-xl text-left my-2">
+                Ground Coffee
+              </Heading>
+            }
+            options={coffeeUnits}
           />
         </SectionCard>
 

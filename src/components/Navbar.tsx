@@ -22,26 +22,26 @@ export function NavBar() {
   }, []);
 
   return (
-    <header className="border-b px-4 bg-[var(--tertiary)]">
-      <div className="flex items-center justify-between  pt-2 pb-2 gap-2">
+    <header className="border-b px-4 bg-[var(--tertiary)] sticky top-0 z-50">
+      <div className="flex items-center justify-center  pt-2 pb-2 gap-2">
         {/* Desktop Navigation */}
         <div className="hidden sm:block">
           <CoffeeIcon className="mr-auto" />
         </div>
-        <nav className="hidden sm:flex ml-auto ">
+        <nav className="hidden sm:flex ml-auto">
           <ul className="flex items-center ">
-            <li>
+            <li className="h-full">
               <Link
                 href="/"
-                className="px-5 py-3 rounded-md transition-colors duration-300 hover-[var(--hover)]"
+                className="flex items-center h-full px-3 py-3 rounded-lg transition-all duration-300 hover:bg-violet-400"
               >
                 Home
               </Link>
             </li>
-            <li>
+            <li className="h-full">
               <Link
                 href="/about"
-                className="px-5 py-3 rounded-md transition-colors duration-300 hover:bg-[var(--accent)]"
+                className="flex items center px-3 py-3 rounded-lg transition-colors duration-300 hover:bg-violet-400"
               >
                 About
               </Link>
@@ -49,7 +49,7 @@ export function NavBar() {
             <li ref={toolsRef} className="relative">
               <button
                 onClick={() => setToolsOpen((prev) => !prev)}
-                className="px-5 py-2.5 rounded-md transition-colors duration-300 hover:bg-[var(--accent)]"
+                className="px-3 py-2.5 rounded-md transition-colors duration-300 hover:bg-violet-400"
               >
                 Tools
               </button>
@@ -57,7 +57,7 @@ export function NavBar() {
                 <div
                   className="
                     absolute 
-                    left-[-110px]
+                    left-[-113px]
                     top-10
                     mt-2 
                     w-48
@@ -68,11 +68,11 @@ export function NavBar() {
                     z-10
                   "
                 >
-                  <ul>
+                  <ul className="shadow-lg">
                     <li>
                       <Link
                         href="/calculator"
-                        className="block px-4 py-2 transition-colors duration-300 hover:bg-[var(--accent)]"
+                        className="block px-4 py-2 transition-colors duration-300 hover:bg-violet-400"
                       >
                         Brew Ratio Calculator
                       </Link>
@@ -80,7 +80,7 @@ export function NavBar() {
                     <li>
                       <Link
                         href="/"
-                        className="flex items-center px-4 py-2 transition-colors duration-300 hover:bg-[var(--accent)]"
+                        className="flex items-center px-4 py-2 transition-colors duration-300 hover:bg-red-300"
                       >
                         Brew Timer <Hammer className="ml-auto h-4.5 w-4.5" />
                       </Link>
