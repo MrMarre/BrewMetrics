@@ -14,6 +14,9 @@ type Props<TField extends FieldValues> = {
   dependantValue?: string;
 };
 
+// NumberField component, s.k kontrollerad komponent med react-hook-form's Controller
+// används för att hantera numerisk inmatning med +/- knappar för värden
+
 const NumberField = <TField extends FieldValues>({
   control,
   name,
@@ -56,6 +59,7 @@ const NumberField = <TField extends FieldValues>({
                     ? valueFormatter(value, dependantValue ?? "") ?? ""
                     : value
                 }
+                //Just works! 🤯 fix för att hantera (av användarens) tomma fält och klara av manuellt inmatade inputs
                 onChange={(e) => {
                   const value = e.target.value;
                   const parsedValue =

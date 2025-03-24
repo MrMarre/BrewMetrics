@@ -3,7 +3,7 @@ export function convertWater(
   toUnit: string,
   precision?: number
 ): number {
-  // Assume the base unit is milliliters.
+  // grundenhet i tusendelar
   let converted: number;
   switch (toUnit) {
     case "grams":
@@ -12,7 +12,7 @@ export function convertWater(
       return Number(converted.toFixed(precision ?? 0));
     case "liters":
       converted = amount / 1000;
-      return Number(converted.toFixed(precision ?? 2));
+      return Number(converted.toFixed(precision ?? 3));
     case "fluid ounces":
       // 1 fluid ounce is approx. 29.57 ml or g.
       converted = amount / 29.57;
@@ -22,6 +22,7 @@ export function convertWater(
   }
 }
 
+// Omvandlar en vattenmängd från en viss enhet till tusendelar för enkelhetens skull.
 export function reverseConvertWater(amount: number, fromUnit: string): number {
   switch (fromUnit) {
     case "milliliters":

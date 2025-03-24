@@ -18,6 +18,7 @@ import {
 import { Button } from "@/components/ui/button";
 
 export default function Calculator() {
+  //* En "Custom hook" för att hantera formuläret
   const {
     watch,
     control,
