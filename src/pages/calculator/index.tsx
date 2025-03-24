@@ -126,7 +126,7 @@ export default function Calculator() {
 
           {/* 5. Customize Water and Coffee on conditional */}
           {showCustomize && (
-            <div className="mt-4 flex  justify-center items-center gap-4">
+            <div className="mt-4 flex justify-center items-center gap-4">
               <div className="flex flex-col gap-4">
                 <NumberField
                   control={control}
