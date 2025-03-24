@@ -93,6 +93,7 @@ export function NavBar() {
         </nav>
       </div>
       <div className="flex sm:hidden w-full items-center justify-between">
+        {/* Mobile */}
         <MobileDrawer />
         <CoffeeIcon className="ml-auto mb-2 h-7 w-7" />
       </div>

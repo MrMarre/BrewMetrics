@@ -18,6 +18,7 @@ import {
 import { Button } from "@/components/ui/button";
 
 export default function Calculator() {
+  //* En "Custom hook" för att hantera formuläret
   const {
     watch,
     control,
@@ -126,7 +127,7 @@ export default function Calculator() {
 
           {/* 5. Customize Water and Coffee on conditional */}
           {showCustomize && (
-            <div className="mt-4 flex  justify-center items-center gap-4">
+            <div className="mt-4 flex justify-center items-center gap-4">
               <div className="flex flex-col gap-4">
                 <NumberField
                   control={control}
@@ -143,7 +144,9 @@ export default function Calculator() {
                   label="Coffee Amount in"
                   dependantValue={watch("coffeeUnit")}
                   incrementValue={1}
-                  valueFormatter={(value) => Number(value).toFixed(2)}
+                  valueFormatter={(value) =>
+                    value % 1 === 0 ? value : Number(value).toFixed(2)
+                  }
                 />
               </div>
             </div>
@@ -161,7 +164,9 @@ export default function Calculator() {
                 <CardTitle>Coffee</CardTitle>
               </CardHeader>
               <CardContent>
-                <p>{`${coffeeAmount?.toFixed(2)} ${coffeeUnit}`}</p>
+                <p>{`${
+                  coffeeAmount ? Number(coffeeAmount).toFixed(2) : ""
+                } ${coffeeUnit}`}</p>
               </CardContent>
             </Card>
             <Card>

@@ -13,6 +13,9 @@ type Props<TField extends FieldValues> = {
   limitAmount?: number;
 };
 
+//* Komponent som används för att hantera radio buttons.
+// limit amount för att hantera eventuell begränsning av antal radio buttons som visas
+
 const RadioGroup = <TField extends FieldValues>({
   control,
   name,
@@ -22,10 +25,13 @@ const RadioGroup = <TField extends FieldValues>({
 }: Props<TField>) => {
   const allOptions = options;
 
+  // parsedOptions innehåller de alternativ som ska visas initialt.
+
   const [parsedOptions, setParsedOptions] = useState<Array<string>>(
     limitAmount ? options.slice(0, limitAmount) : options
   );
 
+  // isExpanded avgör om listan är expanderad (alla alternativ visas) eller inte.
   const [isExpanded, setIsExpanded] = useState<boolean>(false);
 
   const handleExpandClick = () => {
@@ -42,6 +48,8 @@ const RadioGroup = <TField extends FieldValues>({
       name={name}
       render={({ field }) => {
         const { onChange, value } = field;
+
+        // Kollar om knappen ska vara inaktiverad, t.ex. om nuvarande värde redan är utanför begränsningen.
         const buttonIsDisabled = limitAmount
           ? parsedOptions.indexOf(value) >= limitAmount
           : false;
