@@ -39,7 +39,6 @@ const useFormStates = () => {
 
   const servings = watch("servings");
   const waterPerServing = watch("waterPerServing");
-
   const coffeeAmount = watch("coffeeAmount");
   const strength = watch("strength");
   const brewMethod = watch("brewMethod");

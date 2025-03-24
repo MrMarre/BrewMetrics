@@ -143,7 +143,9 @@ export default function Calculator() {
                   label="Coffee Amount in"
                   dependantValue={watch("coffeeUnit")}
                   incrementValue={1}
-                  valueFormatter={(value) => Number(value).toFixed(2)}
+                  valueFormatter={(value) =>
+                    value % 1 === 0 ? value : Number(value).toFixed(2)
+                  }
                 />
               </div>
             </div>
@@ -161,7 +163,9 @@ export default function Calculator() {
                 <CardTitle>Coffee</CardTitle>
               </CardHeader>
               <CardContent>
-                <p>{`${coffeeAmount?.toFixed(2)} ${coffeeUnit}`}</p>
+                <p>{`${
+                  coffeeAmount ? Number(coffeeAmount).toFixed(2) : ""
+                } ${coffeeUnit}`}</p>
               </CardContent>
             </Card>
             <Card>
