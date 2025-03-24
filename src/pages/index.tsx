@@ -13,9 +13,9 @@ export default function Home() {
         >
           <div className="w-full md:w-1/2">
             <p>
-              In each coffee enthusiast's journey, there comes a time when they
-              want to brew the perfect cup of coffee. This is where the Brew
-              Ratio Calculator comes in.
+              In each coffee enthusiast&#39;s journey, there comes a time when
+              they want to brew the perfect cup of coffee. This is where the
+              Brew Ratio Calculator comes in.
             </p>
             <Button className="bg-[var(--accent)] text-[var(--foreground)] transition-colors duration-300 hover:bg-[var(--accent-light)]">
               <Link href="/calculator">To Calculator</Link>
