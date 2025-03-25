@@ -57,7 +57,7 @@ const RadioGroup = <TField extends FieldValues>({
         return (
           <>
             {label}
-            <div className="flex flex-col gap-2 text-lg">
+            <div className="flex flex-col gap-2 text-lg justify-center">
               {parsedOptions.map((option) => (
                 <label
                   key={option}
@@ -88,15 +88,15 @@ const RadioGroup = <TField extends FieldValues>({
                     setIsExpanded(!isExpanded);
                     handleExpandClick();
                   }}
-                  className={`px-3 py-1 border rounded bg-[var(--tertiary)] ${
+                  className={`py-6 px-8 md:py-4 w-full md:w-1/2 mt-4 mx-auto border rounded bg-[var(--tertiary)] text-base ${
                     buttonIsDisabled
                       ? "text-red-400"
                       : "text-[var(--foreground)]"
                   }`}
                 >
                   {isExpanded
-                    ? "Show less brewing methods"
-                    : "Show more brewing methods"}
+                    ? "Show less brew methods"
+                    : "Show more brew methods"}
                 </Button>
               )}
             </div>
