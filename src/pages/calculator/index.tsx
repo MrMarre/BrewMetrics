@@ -45,7 +45,7 @@ export default function Calculator() {
       >
         reset all
       </Button>
-      <form className=" mx-auto p-8 flex flex-col gap-8 items-center">
+      <form className="mx-auto p-4 flex flex-col gap-8 items-center">
         <Heading as="h1" className="text-3xl font-serif">
           Optimal Brew Ratio Calculator
         </Heading>

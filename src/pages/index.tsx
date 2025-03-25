@@ -33,7 +33,7 @@ export default function Home() {
         <meta property="og:url" content="https://brew-metrics.vercel.app/" />
         <meta name="twitter:card" content="summary_large_image" />
       </Head>
-      <main className="container mx-auto flex flex-col gap-12 w-full sm:w-3/4 md:w-3/4 px-4 py-8">
+      <main className="container mx-auto flex flex-col gap-12 w-full sm:w-3/4 md:w-3/4  px-4 py-8">
         <Heading as="h1" className="text-4xl font-serif">
           BrewMetrics
         </Heading>
