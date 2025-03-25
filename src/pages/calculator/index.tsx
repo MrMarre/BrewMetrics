@@ -18,7 +18,6 @@ import {
 import { Button } from "@/components/ui/button";
 
 export default function Calculator() {
-  //* En "Custom hook" för att hantera formuläret
   const {
     watch,
     control,
@@ -46,7 +45,7 @@ export default function Calculator() {
       >
         reset all
       </Button>
-      <form className="container mx-auto p-8 flex flex-col gap-8 items-center">
+      <form className=" mx-auto p-8 flex flex-col gap-8 items-center">
         <Heading as="h1" className="text-3xl font-serif">
           Optimal Brew Ratio Calculator
         </Heading>
@@ -112,23 +111,29 @@ export default function Calculator() {
           <Heading as="h2" className="text-2xl text-center mb-4 ">
             Decide on number of servings
           </Heading>
-          <div className="flex flex-col justify-center items-center gap-4">
-            <NumberField control={control} name="servings" incrementValue={1} />
+          <div className="w-full flex justify-center gap-4">
+            <div className=" mx-auto">
+              <NumberField
+                control={control}
+                name="servings"
+                incrementValue={1}
+              />
 
-            {/* 4.1 Dropdown toggle to show or hide custom */}
-            <Button
-              type="button"
-              onClick={() => setShowCustomize((prev) => !prev)}
-              className="px-3 py-5 text-base md:py-4 w-full md:w-1/2  border rounded bg-[var(--tertiary)] text-[var(--foreground)] transition-colors duration-300 hover:bg-violet-300"
-            >
-              {showCustomize ? "Hide" : "Adjust serving size"}
-            </Button>
+              {/* 4.1 Dropdown toggle to show or hide custom */}
+              <Button
+                type="button"
+                onClick={() => setShowCustomize((prev) => !prev)}
+                className="px-3 py-5 mt-4 text-base md:py-4 w-full max-w-[18rem] border rounded bg-[var(--tertiary)] text-[var(--foreground)] transition-colors duration-300 hover:bg-violet-300"
+              >
+                {showCustomize ? "Hide" : "Adjust serving size"}
+              </Button>
+            </div>
           </div>
 
           {/* 5. Customize Water and Coffee on conditional */}
           {showCustomize && (
             <div className="mt-4 flex justify-center items-center gap-4">
-              <div className="flex flex-col gap-4">
+              <div>
                 <NumberField
                   control={control}
                   name="waterPerServing"

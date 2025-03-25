@@ -37,7 +37,7 @@ const NumberField = <TField extends FieldValues>({
             <label htmlFor={name} className="block mb-1">
               {label} {dependantValue}
             </label>
-            <div className="flex items-center gap-2 w-full">
+            <div className="flex items-center justify-center gap-2 w-full">
               <Button
                 type="button"
                 variant="outline"
