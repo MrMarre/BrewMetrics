@@ -88,7 +88,7 @@ const RadioGroup = <TField extends FieldValues>({
                     setIsExpanded(!isExpanded);
                     handleExpandClick();
                   }}
-                  className={`py-6 px-8 md:py-4 w-full md:w-1/2 mt-4 mx-auto border rounded bg-[var(--tertiary)] text-base ${
+                  className={`py-5 px-8 md:py-4 w-full md:w-1/2 mt-4 mx-auto border rounded bg-[var(--tertiary)] text-base ${
                     buttonIsDisabled
                       ? "text-red-400"
                       : "text-[var(--foreground)]"

@@ -119,7 +119,7 @@ export default function Calculator() {
             <Button
               type="button"
               onClick={() => setShowCustomize((prev) => !prev)}
-              className="px-3 py-6 text-base md:py-4 w-full md:w-1/2 mx-auto border rounded bg-[var(--tertiary)] text-[var(--foreground)] transition-colors duration-300 hover:bg-violet-300"
+              className="px-3 py-5 text-base md:py-4 w-full md:w-1/2  border rounded bg-[var(--tertiary)] text-[var(--foreground)] transition-colors duration-300 hover:bg-violet-300"
             >
               {showCustomize ? "Hide" : "Adjust serving size"}
             </Button>

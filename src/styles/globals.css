@@ -86,13 +86,13 @@
   --radius-lg: var(--radius);
   --radius-xl: calc(var(--radius) + 4px);
 }
-
-@media (prefers-color-scheme: dark) {
+/** Fix dark mode later */
+/* @media (prefers-color-scheme: dark) {
   :root {
     --background: #323232;
     --foreground: #ededed;
   }
-}
+} */
 
 body {
   background: var(--background);

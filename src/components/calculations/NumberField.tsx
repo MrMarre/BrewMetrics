@@ -37,14 +37,14 @@ const NumberField = <TField extends FieldValues>({
             <label htmlFor={name} className="block mb-1">
               {label} {dependantValue}
             </label>
-            <div className="flex items-center gap-2">
+            <div className="flex items-center gap-2 w-full">
               <Button
                 type="button"
                 variant="outline"
                 onClick={() =>
                   onChange(Math.max(1, Number(value) - incrementValue))
                 }
-                className="px-3 py-1 border rounded bg-[var(--tertiary)]"
+                className="w-8 px-3 py-1 border rounded bg-[var(--tertiary)]"
               >
                 -
               </Button>
@@ -81,7 +81,7 @@ const NumberField = <TField extends FieldValues>({
                 onClick={() =>
                   onChange(Math.max(0, Number(value) + incrementValue))
                 }
-                className="px-3 py-1 border rounded bg-[var(--tertiary)]"
+                className="w-8 px-3 py-1 border rounded bg-[var(--tertiary)]"
               >
                 +
               </Button>
