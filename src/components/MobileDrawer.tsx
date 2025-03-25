@@ -18,7 +18,7 @@ export default function MobileDrawer() {
       </DrawerTrigger>
       <DrawerContent>
         <DrawerHeader>
-          <DrawerTitle className="text-center font-light text-xl m-5">
+          <DrawerTitle className="text-center text-2xl m-5 font-light">
             BrewMetrics
           </DrawerTitle>
         </DrawerHeader>
@@ -26,7 +26,7 @@ export default function MobileDrawer() {
           <DrawerClose className="flex" asChild>
             <Link
               href="/"
-              className="block w-full text-left bg-[var(--tertiary)] px-4 py-2 shadow-md rounded-xs"
+              className="block w-full text-left bg-[var(--tertiary)] px-4 py-4 shadow-md"
             >
               Home <ChevronRight className="ml-auto" />
             </Link>
@@ -35,7 +35,7 @@ export default function MobileDrawer() {
           <DrawerClose className="flex" asChild>
             <Link
               href="/"
-              className="block w-full text-left text-gray-800 px-4 py-2 bg-violet-300 shadow-md rounded-xs "
+              className="block w-full text-left text-gray-800 px-4 py-4 bg-violet-300 shadow-md"
             >
               About <ChevronRight className="ml-auto" />
             </Link>
@@ -43,7 +43,7 @@ export default function MobileDrawer() {
           <DrawerClose className="flex" asChild>
             <Link
               href="/calculator"
-              className="block w-full text-left px-4 py-2 bg-[var(--tertiary)] shadow-md rounded-xs"
+              className="block w-full text-left px-4 py-4 bg-[var(--tertiary)] shadow-md"
             >
               Calculator <ChevronRight className="ml-auto" />
             </Link>

@@ -59,7 +59,7 @@ const NumberField = <TField extends FieldValues>({
                     ? valueFormatter(value, dependantValue ?? "") ?? ""
                     : value
                 }
-                //Just works! 🤯 fix för att hantera (av användarens) tomma fält och klara av manuellt inmatade inputs
+                //Just works! 🤯 fix för att hantera (av användarens) tomma fält och klara av manuellt inmatade inputs utan att lämna trailing
                 onChange={(e) => {
                   const value = e.target.value;
                   const parsedValue =
