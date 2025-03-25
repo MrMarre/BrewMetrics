@@ -5,7 +5,7 @@ import balancingCups from "@public/assets/images/nathan-dumlao.jpg";
 import Link from "next/link";
 import { Heading } from "@/components/ui/heading";
 import SvgImage from "@/components/common/SvgImage";
-import { coffeeMaker, coffeeMugHeart, coffeeScale } from "@public/assets/svg";
+import { coffeeMaker, coffeeScale } from "@public/assets/svg";
 import Head from "next/head";
 
 export default function Home() {
