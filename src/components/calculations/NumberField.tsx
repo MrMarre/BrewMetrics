@@ -14,8 +14,8 @@ type Props<TField extends FieldValues> = {
   dependantValue?: string;
 };
 
-// NumberField component, s.k kontrollerad komponent med react-hook-form's Controller
-// används för att hantera numerisk inmatning med +/- knappar för värden
+// NumberField component, controlled with react-hook-form
+// Used for handling numeric input on incrementer AND manual typing
 
 const NumberField = <TField extends FieldValues>({
   control,
@@ -59,7 +59,7 @@ const NumberField = <TField extends FieldValues>({
                     ? valueFormatter(value, dependantValue ?? "") ?? ""
                     : value
                 }
-                //Just works! 🤯 fix för att hantera (av användarens) tomma fält och klara av manuellt inmatade inputs utan att lämna trailing
+                //Works! handles trailing numbers
                 onChange={(e) => {
                   const value = e.target.value;
                   const parsedValue =

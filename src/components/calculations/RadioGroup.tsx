@@ -13,8 +13,8 @@ type Props<TField extends FieldValues> = {
   limitAmount?: number;
 };
 
-//* Komponent som används för att hantera radio buttons.
-// limit amount för att hantera eventuell begränsning av antal radio buttons som visas
+//* Component with a flexible radio.
+// limit amount handles limiting of number of radio's
 
 const RadioGroup = <TField extends FieldValues>({
   control,

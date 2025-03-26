@@ -13,7 +13,7 @@ type Props<TField extends FieldValues> = {
   step?: number;
 };
 
-//* Används för att justera numeriskt värde med en input type="range", dock från Shadcn
+//* Used for adjusting values with shadcns Slider/input[type=range]
 
 const RangeInput = <TField extends FieldValues>({
   control,
