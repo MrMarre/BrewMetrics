@@ -10,6 +10,7 @@ import {
 import Link from "next/link";
 import { ChevronRight, Menu } from "lucide-react";
 
+//Mobile navigation
 export default function MobileDrawer() {
   return (
     <Drawer direction="top">

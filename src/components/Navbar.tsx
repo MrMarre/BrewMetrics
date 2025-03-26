@@ -8,6 +8,7 @@ export function NavBar() {
   const [toolsOpen, setToolsOpen] = useState(false);
   const toolsRef = useRef<HTMLLIElement>(null);
 
+  // handles click outside of dropdown in desktop view
   useEffect(() => {
     function handleClickOutside(event: MouseEvent) {
       if (
@@ -93,7 +94,7 @@ export function NavBar() {
         </nav>
       </div>
       <div className="flex sm:hidden w-full items-center justify-between">
-        {/* Mobile */}
+        {/* Renders on smaller units */}
         <MobileDrawer />
         <CoffeeIcon className="ml-auto mb-2 h-7 w-7" />
       </div>

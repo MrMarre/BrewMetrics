@@ -63,7 +63,7 @@ export default function Calculator() {
             limitAmount={4}
           />
         </SectionCard>
-        {/* 2. Adjust Strength */}
+        {/* 2. Adjust Strength in range */}
         <SectionCard>
           <RangeInput
             label={

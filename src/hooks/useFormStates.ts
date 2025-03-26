@@ -37,7 +37,7 @@ const useFormStates = () => {
 
   const handleResetClick = () => reset(initialValues);
 
-  //Värden att bevaka, hämta och uppdatera, används flitigt i calculator/index
+  // Values to prescribe to throughout the calculator
   const servings = watch("servings");
   const waterPerServing = watch("waterPerServing");
   const coffeeAmount = watch("coffeeAmount");
@@ -46,12 +46,12 @@ const useFormStates = () => {
   const coffeeUnit = watch("coffeeUnit");
   const waterUnit = watch("waterUnit");
 
-  // Beräknar ratioRange baserat på aktuell bryggmetod
+  // tracks the constant values associated with brewMethods
   const ratioRange = useMemo<RatioRange>(() => {
     return BREW_METHOD_RANGES[brewMethod ?? "Pour-over"];
   }, [brewMethod]);
 
-  // Uppdaterar totala vattenmängden baserat på vatten per portion och antal portioner
+  // Updates total wateramount based upon actual serving size and portions
   useEffect(() => {
     if (waterPerServing && coffeeAmount) {
       const newWaterAmount = (servings ?? 0) * (waterPerServing ?? 0);
@@ -59,7 +59,7 @@ const useFormStates = () => {
     }
   }, [waterPerServing, setWaterAmount, servings, coffeeAmount]);
 
-  // Återställer vatten per portion och styrka utifrån bryggmetod och standardvärden
+  // Setter and subscriber for constants regarding ratio and Strength
   useEffect(() => {
     const methodKey = (brewMethod ??
       "Pour-over") as keyof typeof BREW_METHOD_RANGES;
@@ -70,7 +70,7 @@ const useFormStates = () => {
     setValue("strength", ratio.baseValue);
   }, [brewMethod, setValue]);
 
-  // Beräknar och uppdaterar kaffemängden baserat på vatten, styrka och antal portioner
+  // Calculates and updates coffeeAmount based upon strength, size and portions
   // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(() => {
     if (waterPerServing && strength && servings) {
