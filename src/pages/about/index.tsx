@@ -30,11 +30,11 @@ export default function About() {
           maker—each offering its own unique experience and challenges.
         </p>
         <p>
-          This site is a reflection of that journey—a place to share what I've
-          learned and help others discover the joy of making consistently great
-          coffee. Whether you're just starting out or looking to fine-tune your
-          skills, I hope this space helps you brew with confidence and
-          curiosity. Let’s make every cup count!
+          This site is a reflection of that journey—a place to share what
+          I&apos;ve learned and help others discover the joy of making
+          consistently great coffee. Whether you&apos;re just starting out or
+          looking to fine-tune your skills, I hope this space helps you brew
+          with confidence and curiosity. Let&apos;s make every cup count!
         </p>
 
         <Button

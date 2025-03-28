@@ -1,4 +1,3 @@
-import useFormStates from "@/hooks/useFormStates";
 import { stringStripper } from "@/utils/stringConversion";
 
 type RatioSummaryProps = {

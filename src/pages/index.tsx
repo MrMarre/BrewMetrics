@@ -1,11 +1,6 @@
-import SectionCard from "@/components/common/SectionCard";
-import { Button } from "@/components/ui/button";
-import Image from "next/image";
-import Link from "next/link";
 import { Heading } from "@/components/ui/heading";
 import SvgImage from "@/components/common/SvgImage";
 import { coffeeMaker, coffeeScale } from "@public/assets/svg";
-import Head from "next/head";
 import SeoHead from "@/components/common/SeoHead";
 import Hero from "@/components/common/Hero";
 import NewSectionCard from "@/components/common/NewSectionCard";
@@ -39,9 +34,9 @@ export default function Home() {
                 width={60}
               />
               <p className="self-start">
-                Looks like you've stumbled upon coffee paradise! Get ready to
-                tweak, sip, and perfect your brew with our easy-to-use
-                tools—because life's too short for bad coffee!
+                Looks like you&apos;ve stumbled upon coffee paradise! Get ready
+                to tweak, sip, and perfect your brew with our easy-to-use
+                tools—because life&apos;s too short for bad coffee!
               </p>
             </div>
             <div className="flex  items-center flex-col gap-4">
@@ -83,9 +78,9 @@ export default function Home() {
           <article className="grid grid-cols-1 md:grid-cols-3 gap-4">
             <p>
               This site is dedicated to helping coffee lovers brew better coffee
-              with precision and confidence. Whether you're a beginner or an
-              experienced home barista, you'll find tools and tips to elevate
-              your coffee-making skills.
+              with precision and confidence. Whether you&apos;re a beginner or
+              an experienced home barista, you&apos;ll find tools and tips to
+              elevate your coffee-making skills.
             </p>
             <p>
               We emphasize the importance of accuracy in coffee brewing by
@@ -98,9 +93,9 @@ export default function Home() {
             <p>
               Beyond brewing, this site is a community for coffee enthusiasts to
               explore new methods, share insights, and refine their craft.
-              Whether you’re experimenting with grind size, water temperature,
-              or brewing time, we aim to be your go-to resource for all things
-              coffee. Join us in making every cup count!
+              Whether you&apos;;re experimenting with grind size, water
+              temperature, or brewing time, we aim to be your go-to resource for
+              all things coffee. Join us in making every cup count!
             </p>
           </article>
         </NewSectionCard>

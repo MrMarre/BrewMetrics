@@ -1,6 +1,6 @@
 // biome-ignore lint/style/useImportType: <explanation>
 import clsx from "clsx";
-import { DetailedHTMLProps, HTMLAttributes, ReactNode } from "react";
+import { HTMLAttributes, ReactNode } from "react";
 import { Heading, HeadingProps } from "../ui/heading";
 import { cn } from "@/lib/utils";
 
