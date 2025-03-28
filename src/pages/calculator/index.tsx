@@ -2,12 +2,13 @@
 import Head from "next/head";
 import { useState } from "react";
 import { convertWater, reverseConvertWater } from "@/utils/unitConversion";
-
 import useFormStates from "../../hooks/useFormStates";
-import { RadioGroup } from "@/components/calculations";
-import { RangeInput } from "@/components/calculations";
-import { NumberField } from "@/components/calculations";
-import SectionCard from "../../components/common/SectionCard";
+import {
+  RadioGroup,
+  RangeInput,
+  NumberField,
+  RatioSummary,
+} from "@/components/calculations";
 import { Heading } from "@/components/ui/heading";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import {
@@ -16,6 +17,7 @@ import {
   waterUnits,
 } from "@/constants/brewOptions";
 import { Button } from "@/components/ui/button";
+import NewSectionCard from "@/components/common/NewSectionCard";
 
 export default function Calculator() {
   const {
@@ -49,68 +51,54 @@ export default function Calculator() {
         <Heading as="h1" className="text-3xl font-serif">
           Optimal Brew Ratio Calculator
         </Heading>
-        <SectionCard>
-          {/* 1. Select Brew Method */}
+
+        {/* 1. Select Brew Method */}
+        <NewSectionCard title="Select Brew Method">
           <RadioGroup
             control={control}
             name="brewMethod"
-            label={
-              <Heading as="h2" className="text-2xl mb-6">
-                Select Brew Method
-              </Heading>
-            }
             options={defaultBrewMethods}
             limitAmount={4}
           />
-        </SectionCard>
+        </NewSectionCard>
         {/* 2. Adjust Strength in range */}
-        <SectionCard>
+        <NewSectionCard title="Adjust Strength">
           <RangeInput
-            label={
-              <Heading as="h2" className="text-2xl mb-6">
-                Adjust Strength
-              </Heading>
-            }
             control={control}
             name="strength"
             minValue={ratioRange.min}
             maxValue={ratioRange.max}
           />
-        </SectionCard>
+        </NewSectionCard>
 
         {/* 3. Choose Units */}
-        <SectionCard>
-          <Heading as="h2" className="text-2xl mb-4">
-            Select Units
-          </Heading>
-
+        <NewSectionCard title="Select Units">
           <RadioGroup
             control={control}
             name="waterUnit"
-            label={
-              <Heading as="h2" className="text-xl text-left my-2">
-                Water
-              </Heading>
-            }
+            label="Water"
+            labelProps={{
+              className: "text-xl text-left my-2",
+            }}
+            // <Heading as="h2" className="text-xl text-left my-2">
+
+            // {/* </Heading> */}
+
             options={waterUnits}
           />
           <RadioGroup
             control={control}
             name="coffeeUnit"
-            label={
-              <Heading as="h2" className="text-xl text-left my-2">
-                Ground Coffee
-              </Heading>
-            }
+            label="Ground Coffee"
+            labelProps={{
+              className: "text-xl text-left my-2",
+            }}
             options={coffeeUnits}
           />
-        </SectionCard>
+        </NewSectionCard>
 
         {/* 4. Choose Number of Servings */}
-        <SectionCard>
-          <Heading as="h2" className="text-2xl text-center mb-4 ">
-            Decide on number of servings
-          </Heading>
+        <NewSectionCard title="Decide Number of Servings">
           <div className="w-full flex justify-center gap-4">
             <div className=" mx-auto">
               <NumberField
@@ -123,7 +111,7 @@ export default function Calculator() {
               <Button
                 type="button"
                 onClick={() => setShowCustomize((prev) => !prev)}
-                className="px-3 py-5 mt-4 text-base md:py-4 w-full max-w-[18rem] border rounded bg-[var(--tertiary)] text-[var(--foreground)] transition-colors duration-300 hover:bg-violet-300"
+                className="px-3 py-5 mt-4 text-base md:py-4 w-full  border rounded bg-[var(--tertiary)] text-[var(--foreground)] transition-colors duration-300 hover:bg-violet-300"
               >
                 {showCustomize ? "Hide" : "Adjust serving size"}
               </Button>
@@ -156,13 +144,10 @@ export default function Calculator() {
               </div>
             </div>
           )}
-        </SectionCard>
+        </NewSectionCard>
 
-        {/* 6. Display Calculated Values */}
-        <SectionCard>
-          <Heading as="h2" className="text-2xl mb-4">
-            Calculated Values
-          </Heading>
+        {/* 6. Display Calculated Values with Shadcn Card */}
+        <NewSectionCard title="Calculated Values">
           <div className="grid gap-4 grid-cols-1 sm:grid-cols-2">
             <Card>
               <CardHeader>
@@ -189,7 +174,16 @@ export default function Calculator() {
               </CardContent>
             </Card>
           </div>
-        </SectionCard>
+          <Card className="mt-4">
+            <CardContent>
+              <RatioSummary
+                strength={watch("strength")}
+                servings={watch("servings")}
+                brewMethod={watch("brewMethod")}
+              />
+            </CardContent>
+          </Card>
+        </NewSectionCard>
       </form>
     </div>
   );

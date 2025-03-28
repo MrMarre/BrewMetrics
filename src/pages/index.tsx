@@ -1,122 +1,105 @@
-import SectionCard from "@/components/common/SectionCard";
-import { Button } from "@/components/ui/button";
-import Image from "next/image";
-import balancingCups from "@public/assets/images/nathan-dumlao.jpg";
-import Link from "next/link";
 import { Heading } from "@/components/ui/heading";
 import SvgImage from "@/components/common/SvgImage";
 import { coffeeMaker, coffeeScale } from "@public/assets/svg";
-import Head from "next/head";
+import SeoHead from "@/components/common/SeoHead";
+import Hero from "@/components/common/Hero";
+import NewSectionCard from "@/components/common/NewSectionCard";
 
 export default function Home() {
   return (
     <>
-      <Head>
-        <title>BrewMetrics | The Perfect Brew Ratio Calculator</title>
-        <meta
-          name="description"
-          content="Calculate the perfect coffee-to-water ratio for your brew with our simple, intuitive, and flexible tools."
-        />
-        <meta
-          name="keywords"
-          content="coffee, brew ratio, calculator, perfect brew, coffee measurement, recipe, tools, tooling, coffee brewing, coffee brewing tools"
-        />
-        <meta
-          property="og:title"
-          content="BrewMetrics | The Perfect Brew Ratio Calculator"
-        />
-        <meta
-          property="og:description"
-          content="Fine-tune your coffee brewing technique with our custom calculator tailored to adjust serving sizes and strength to unlock the perfect cup."
-        />
-
-        <meta property="og:url" content="https://brew-metrics.vercel.app/" />
-        <meta name="twitter:card" content="summary_large_image" />
-      </Head>
+      <SeoHead
+        title="BrewMetrics | The Perfect Brew Ratio Calculator"
+        description="Calculate the perfect coffee-to-water ratio for your brew with our simple, intuitive, and flexible tools."
+        keywords="coffee, brew ratio, calculator, perfect brew, coffee measurement, recipe, tools, tooling, coffee brewing, coffee brewing tools"
+        url="https://brew-metrics.vercel.app/"
+      />
       <main className="container mx-auto flex flex-col gap-12 w-full sm:w-3/4 md:w-3/4  px-4 py-8">
         <Heading as="h1" className="text-4xl font-serif">
           BrewMetrics
         </Heading>
-        <section className="max-w-full flex flex-col md:flex-row justify-between items-center gap-5 mt-6">
-          <div className="w-full md:w-1/2 flex flex-col gap-5">
-            <article className="prose max-w-prose font-">
-              <Heading as="h3" className="text-2xl text-left">
-                Every coffee enthusiast&#39;s journey leads to a moment of
-                pursuit — the quest for the perfectly balanced cup. That&#39;s
-                where the Brew Ratio Calculator steps in.
-              </Heading>
-            </article>
-            <Button
-              variant="outline"
-              className="bg-[var(--accent)] text-[var(--foreground)] transition-colors duration-300 hover:bg-[var(--accent-light)] font-semibold py-4 w-full md:w-1/2"
-            >
-              <Link href="/calculator">To Calculator</Link>
-            </Button>
-          </div>
-          <div className="w-full md:w-1/2">
-            <Image
-              src={balancingCups}
-              alt="Cups balancing on a table"
-              className="rounded"
-            />
-          </div>
-        </section>
+        <Hero />
 
-        <SectionCard disableDefaultMaxWidth className="max-w-full ">
+        <NewSectionCard
+          title="Welcome!"
+          disableDefaultMaxWidth
+          className="max-w-full"
+        >
           <article className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            <div className="flex justify-center items-center flex-col md:flex-row gap-4">
-              <p className="self-start">
-                Brewing perfections starts here. Our intuitive coffe-to-water
-                ratio calculator empowers you to fine-tune every cup to your
-                taste. Effortlessly adjust serving sizes and strength to unlock
-                the perfect brew.
-              </p>
+            <div className="flex  items-center flex-col gap-4">
               <SvgImage
                 src={coffeeMaker}
                 alt="auto drip brewer"
                 height={60}
                 width={60}
               />
-            </div>
-            <div className="flex justify-center items-center flex-col md:flex-row gap-4">
-              <p className="bg-gray-100 rounded self-start">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga
-                magnam distinctio cum voluptatem, cupiditate, explicabo unde
-                repudiandae, consequatur delectus omnis quod veniam dolores
-                veritatis id dolore.
+              <p className="self-start">
+                Looks like you&apos;ve stumbled upon coffee paradise! Get ready
+                to tweak, sip, and perfect your brew with our easy-to-use
+                tools—because life&apos;s too short for bad coffee!
               </p>
+            </div>
+            <div className="flex  items-center flex-col gap-4">
               <SvgImage src={coffeeScale} alt="scale" height={60} width={60} />
+              <p className="rounded self-start">
+                Brewing perfections starts here. Our intuitive coffe-to-water
+                ratio calculator empowers you to fine-tune every cup to your
+                taste. Effortlessly adjust serving sizes and strength to unlock
+                the perfect brew.
+              </p>
             </div>
           </article>
-        </SectionCard>
-        <SectionCard disableDefaultMaxWidth className="max-w-full md:flex-row">
-          <article className="grid grid-cols-1 md:grid-cols-2 gap-4 ">
-            <div className=" bg-gray-100 rounded">Item 4</div>
-            <div className=" bg-gray-100 rounded">Item 5</div>
+        </NewSectionCard>
+        <NewSectionCard
+          title="About the Trusty Coffee Spoon"
+          disableDefaultMaxWidth
+          className="max-w-full md:flex-row"
+        >
+          <article className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <p className="">
+              The habitual act of using a coffee scoop as a measurement may lead
+              to unwanted inconsistencies in regards to the variance of roast
+              levels, grind sizes but mainly depending on the human factor.
+            </p>
+            <p className="">
+              Ditching the coffee scoop in favor of weighing your coffee and
+              water leads to more consistent and better-tasting brews. By using
+              a scale, you ensure consistent coffee-to-water ratio, leading to
+              balanced flavors and eliminating guesswork.
+            </p>
           </article>
-        </SectionCard>
+        </NewSectionCard>
 
-        <SectionCard disableDefaultMaxWidth className="max-w-full md:flex-row">
+        <NewSectionCard
+          title="Purpose"
+          disableDefaultMaxWidth
+          className="max-w-full md:flex-row"
+        >
           <article className="grid grid-cols-1 md:grid-cols-3 gap-4">
-            <div className=" bg-gray-100 rounded">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Ab,
-              blanditiis amet? Totam nesciunt doloribus sunt impedit magnam
-              quasi est officia.
-            </div>
-            <div className=" bg-gray-100 rounded">
-              Lorem ipsum, dolor sit amet consectetur adipisicing elit. Debitis
-              veniam rem error, sit ea eveniet dolorum consequuntur suscipit
-              magni ipsam obcaecati inventore perferendis quae velit ratione
-              ipsum neque soluta temporibus!
-            </div>
-            <div className=" bg-gray-100 rounded">
-              Lorem, ipsum dolor sit amet consectetur adipisicing elit.
-              Molestias ab nulla, laborum omnis quis voluptate.
-            </div>
+            <p>
+              This site is dedicated to helping coffee lovers brew better coffee
+              with precision and confidence. Whether you&apos;re a beginner or
+              an experienced home barista, you&apos;ll find tools and tips to
+              elevate your coffee-making skills.
+            </p>
+            <p>
+              We emphasize the importance of accuracy in coffee brewing by
+              promoting the use of scales, proper ratios, and consistent
+              techniques. Our site offers a easy-to-use calculator and
+              step-by-step instructions to help you fine-tune your process. By
+              understanding the science behind coffee extraction, you can
+              achieve a balanced and flavorful brew every time.
+            </p>
+            <p>
+              Beyond brewing, this site is a community for coffee enthusiasts to
+              explore new methods, share insights, and refine their craft.
+              Whether you&apos;;re experimenting with grind size, water
+              temperature, or brewing time, we aim to be your go-to resource for
+              all things coffee. Join us in making every cup count!
+            </p>
           </article>
-        </SectionCard>
+        </NewSectionCard>
       </main>
-      );
     </>
   );
 }

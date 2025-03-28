@@ -89,8 +89,10 @@
 /** Fix dark mode later */
 /* @media (prefers-color-scheme: dark) {
   :root {
-    --background: #323232;
-    --foreground: #ededed;
+    --background: #383535;
+    --secondary: #383535;
+
+    --foreground: #aeaaaa;
   }
 } */
 
