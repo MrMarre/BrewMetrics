@@ -1,66 +1,29 @@
 import SectionCard from "@/components/common/SectionCard";
 import { Button } from "@/components/ui/button";
 import Image from "next/image";
-import balancingCups from "@public/assets/images/nathan-dumlao.jpg";
+
 import Link from "next/link";
 import { Heading } from "@/components/ui/heading";
 import SvgImage from "@/components/common/SvgImage";
 import { coffeeMaker, coffeeScale } from "@public/assets/svg";
 import Head from "next/head";
+import SeoHead from "@/components/common/SeoHead";
+import Hero from "@/components/common/Hero";
 
 export default function Home() {
   return (
     <>
-      <Head>
-        <title>BrewMetrics | The Perfect Brew Ratio Calculator</title>
-        <meta
-          name="description"
-          content="Calculate the perfect coffee-to-water ratio for your brew with our simple, intuitive, and flexible tools."
-        />
-        <meta
-          name="keywords"
-          content="coffee, brew ratio, calculator, perfect brew, coffee measurement, recipe, tools, tooling, coffee brewing, coffee brewing tools"
-        />
-        <meta
-          property="og:title"
-          content="BrewMetrics | The Perfect Brew Ratio Calculator"
-        />
-        <meta
-          property="og:description"
-          content="Fine-tune your coffee brewing technique with our custom calculator tailored to adjust serving sizes and strength to unlock the perfect cup."
-        />
-
-        <meta property="og:url" content="https://brew-metrics.vercel.app/" />
-        <meta name="twitter:card" content="summary_large_image" />
-      </Head>
+      <SeoHead
+        title="BrewMetrics | The Perfect Brew Ratio Calculator"
+        description="Calculate the perfect coffee-to-water ratio for your brew with our simple, intuitive, and flexible tools."
+        keywords="coffee, brew ratio, calculator, perfect brew, coffee measurement, recipe, tools, tooling, coffee brewing, coffee brewing tools"
+        url="https://brew-metrics.vercel.app/"
+      />
       <main className="container mx-auto flex flex-col gap-12 w-full sm:w-3/4 md:w-3/4  px-4 py-8">
         <Heading as="h1" className="text-4xl font-serif">
           BrewMetrics
         </Heading>
-        <section className="max-w-full flex flex-col md:flex-row justify-between items-center gap-5 mt-6">
-          <div className="w-full md:w-1/2 flex flex-col gap-5">
-            <article className="prose max-w-prose font-">
-              <Heading as="h3" className="text-2xl text-left">
-                Every coffee enthusiast&#39;s journey leads to a moment of
-                pursuit — the quest for the perfectly balanced cup. That&#39;s
-                where the Brew Ratio Calculator steps in.
-              </Heading>
-            </article>
-            <Button
-              variant="outline"
-              className="bg-[var(--accent)] text-[var(--foreground)] transition-colors duration-300 hover:bg-[var(--accent-light)] font-semibold py-4 w-full md:w-1/2"
-            >
-              <Link href="/calculator">To Calculator</Link>
-            </Button>
-          </div>
-          <div className="w-full md:w-1/2">
-            <Image
-              src={balancingCups}
-              alt="Cups balancing on a table"
-              className="rounded"
-            />
-          </div>
-        </section>
+        <Hero />
 
         <SectionCard disableDefaultMaxWidth className="max-w-full ">
           <article className="grid grid-cols-1 md:grid-cols-2 gap-4">

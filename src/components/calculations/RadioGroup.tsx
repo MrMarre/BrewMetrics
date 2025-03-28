@@ -4,6 +4,7 @@ import React, { useState, ReactNode } from "react";
 import { Control, Controller, FieldValues, Path } from "react-hook-form";
 import cn from "clsx";
 import { Button } from "../ui/button";
+import { Heading, HeadingProps } from "../ui/heading";
 
 type Props<TField extends FieldValues> = {
   control: Control<TField>;
@@ -11,6 +12,7 @@ type Props<TField extends FieldValues> = {
   options: Array<string>;
   label?: ReactNode;
   limitAmount?: number;
+  labelProps?: Partial<HeadingProps>;
 };
 
 //* Component with a flexible radio.
@@ -22,6 +24,7 @@ const RadioGroup = <TField extends FieldValues>({
   label,
   options,
   limitAmount,
+  labelProps,
 }: Props<TField>) => {
   const allOptions = options;
 
@@ -49,14 +52,19 @@ const RadioGroup = <TField extends FieldValues>({
       render={({ field }) => {
         const { onChange, value } = field;
 
-        // Kollar om knappen ska vara inaktiverad, t.ex. om nuvarande värde redan är utanför begränsningen.
         const buttonIsDisabled = limitAmount
           ? parsedOptions.indexOf(value) >= limitAmount
           : false;
 
         return (
           <>
-            {label}
+            {/* {label} */}
+            <Heading
+              className={cn("text-xl", labelProps?.className)}
+              {...labelProps}
+            >
+              {label}
+            </Heading>
             <div className="flex flex-col gap-2 text-lg justify-center">
               {parsedOptions.map((option) => (
                 <label
