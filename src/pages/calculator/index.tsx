@@ -3,9 +3,12 @@ import Head from "next/head";
 import { useState } from "react";
 import { convertWater, reverseConvertWater } from "@/utils/unitConversion";
 import useFormStates from "../../hooks/useFormStates";
-import { RadioGroup } from "@/components/calculations";
-import { RangeInput } from "@/components/calculations";
-import { NumberField } from "@/components/calculations";
+import {
+  RadioGroup,
+  RangeInput,
+  NumberField,
+  RatioSummary,
+} from "@/components/calculations";
 import { Heading } from "@/components/ui/heading";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import {
@@ -15,7 +18,6 @@ import {
 } from "@/constants/brewOptions";
 import { Button } from "@/components/ui/button";
 import NewSectionCard from "@/components/common/NewSectionCard";
-import RatioSummary from "@/components/calculations/RatioSummary";
 
 export default function Calculator() {
   const {
@@ -185,8 +187,4 @@ export default function Calculator() {
       </form>
     </div>
   );
-}
-// Based on your chosen coffee to water ratio of 1:15 for French press, to brew 1 serving you'll need 8 grams of coffee and 120 grams of water.
-{
-  /* <p>{`Your chosen ratio of 1 : ${watch("strength")}`}</p>; */
 }

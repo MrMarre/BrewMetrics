@@ -7,22 +7,25 @@ type RatioSummaryProps = {
   brewMethod: string | undefined;
 };
 
-export default function RatioSummary({
+const RatioSummary = ({
   strength,
   brewMethod,
   servings,
-}: RatioSummaryProps) {
+}: RatioSummaryProps) => {
   return (
     <p className="text-base">
-      Your ratio of{" "}
-      <span className="mx-1 px-1 bg-violet-200 font-bold">{`1 : ${strength}`}</span>
+      Your ratio of
+      <span className="mx-1 px-1 bg-violet-200 rounded font-bold">{`1 : ${strength}`}</span>
       for
-      <span className="mx-1 px-1 bg-violet-200 font-bold">{brewMethod}</span>
+      <span className="mx-1 px-1 bg-violet-200 rounded font-bold">
+        {brewMethod}
+      </span>
       brews
-      <span className="mx-1 px-1 bg-violet-200 font-bold">{`${stringStripper(
-        servings,
-        "serving"
-      )}`}</span>
+      <span className=" px-1 font-bold">
+        {`${stringStripper(servings, "serving")}`}.
+      </span>
     </p>
   );
-}
+};
+
+export default RatioSummary;
