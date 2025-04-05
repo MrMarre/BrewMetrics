@@ -59,7 +59,11 @@ export default function Home() {
             <p className="">
               The habitual act of using a coffee scoop as a measurement may lead
               to unwanted inconsistencies in regards to the variance of roast
-              levels, grind sizes but mainly depending on the human factor.
+              levels, grind sizes but mainly depending on the human factor
+              <span className="font-bold">
+                - it&apos;s basically impossible to measure coffee consistently
+                by hand.
+              </span>
             </p>
             <p className="">
               Ditching the coffee scoop in favor of weighing your coffee and

@@ -3,6 +3,7 @@ import React, { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import MobileDrawer from "./MobileDrawer";
 import { CoffeeIcon, Hammer } from "lucide-react";
+import { Button } from "../ui/button";
 
 export function NavBar() {
   const [toolsOpen, setToolsOpen] = useState(false);
@@ -73,6 +74,7 @@ export function NavBar() {
                     <li>
                       <Link
                         href="/calculator"
+                        onClick={() => setToolsOpen(false)}
                         className="block px-4 py-2 transition-colors duration-300 hover:bg-violet-400"
                       >
                         Brew Ratio Calculator
@@ -81,6 +83,7 @@ export function NavBar() {
                     <li>
                       <Link
                         href="/"
+                        onClick={() => setToolsOpen(false)}
                         className="flex items-center px-4 py-2 transition-colors duration-300 hover:bg-red-300"
                       >
                         Brew Timer <Hammer className="ml-auto h-4.5 w-4.5" />
