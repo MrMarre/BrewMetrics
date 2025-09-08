@@ -89,7 +89,7 @@ export default function Home() {
             <p>
               We emphasize the importance of accuracy in coffee brewing by
               promoting the use of scales, proper ratios, and consistent
-              techniques. Our site offers a easy-to-use calculator and
+              techniques. Our site offers an easy-to-use calculator and
               step-by-step instructions to help you fine-tune your process. By
               understanding the science behind coffee extraction, you can
               achieve a balanced and flavorful brew every time.
@@ -97,7 +97,7 @@ export default function Home() {
             <p>
               Beyond brewing, this site is a community for coffee enthusiasts to
               explore new methods, share insights, and refine their craft.
-              Whether you&apos;;re experimenting with grind size, water
+              Whether you&apos;re experimenting with grind size, water
               temperature, or brewing time, we aim to be your go-to resource for
               all things coffee. Join us in making every cup count!
             </p>
