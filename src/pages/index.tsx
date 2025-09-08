@@ -42,7 +42,7 @@ export default function Home() {
             <div className="flex  items-center flex-col gap-4">
               <SvgImage src={coffeeScale} alt="scale" height={60} width={60} />
               <p className="rounded self-start">
-                Brewing perfections starts here. Our intuitive coffe-to-water
+                Brewing perfections starts here. Our intuitive coffee-to-water
                 ratio calculator empowers you to fine-tune every cup to your
                 taste. Effortlessly adjust serving sizes and strength to unlock
                 the perfect brew.
