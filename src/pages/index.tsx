@@ -42,7 +42,7 @@ export default function Home() {
             <div className="flex  items-center flex-col gap-4">
               <SvgImage src={coffeeScale} alt="scale" height={60} width={60} />
               <p className="rounded self-start">
-                Brewing perfections starts here. Our intuitive coffe-to-water
+                Brewing perfections starts here. Our intuitive coffee-to-water
                 ratio calculator empowers you to fine-tune every cup to your
                 taste. Effortlessly adjust serving sizes and strength to unlock
                 the perfect brew.
@@ -59,7 +59,11 @@ export default function Home() {
             <p className="">
               The habitual act of using a coffee scoop as a measurement may lead
               to unwanted inconsistencies in regards to the variance of roast
-              levels, grind sizes but mainly depending on the human factor.
+              levels, grind sizes but mainly depending on the human factor
+              <span className="font-bold">
+                - it&apos;s basically impossible to measure coffee consistently
+                by hand.
+              </span>
             </p>
             <p className="">
               Ditching the coffee scoop in favor of weighing your coffee and
@@ -85,7 +89,7 @@ export default function Home() {
             <p>
               We emphasize the importance of accuracy in coffee brewing by
               promoting the use of scales, proper ratios, and consistent
-              techniques. Our site offers a easy-to-use calculator and
+              techniques. Our site offers an easy-to-use calculator and
               step-by-step instructions to help you fine-tune your process. By
               understanding the science behind coffee extraction, you can
               achieve a balanced and flavorful brew every time.
@@ -93,7 +97,7 @@ export default function Home() {
             <p>
               Beyond brewing, this site is a community for coffee enthusiasts to
               explore new methods, share insights, and refine their craft.
-              Whether you&apos;;re experimenting with grind size, water
+              Whether you&apos;re experimenting with grind size, water
               temperature, or brewing time, we aim to be your go-to resource for
               all things coffee. Join us in making every cup count!
             </p>
