@@ -3,7 +3,6 @@ import React, { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import MobileDrawer from "./MobileDrawer";
 import { CoffeeIcon, Hammer } from "lucide-react";
-import { Button } from "../ui/button";
 
 export function NavBar() {
   const [toolsOpen, setToolsOpen] = useState(false);
