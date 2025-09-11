@@ -18,6 +18,7 @@ import {
 } from "@/constants/brewOptions";
 import { Button } from "@/components/ui/button";
 import NewSectionCard from "@/components/common/NewSectionCard";
+import CardSection from "@/components/common/CardSection";
 
 export default function Calculator() {
   const {
@@ -33,7 +34,7 @@ export default function Calculator() {
   const [showCustomize, setShowCustomize] = useState(false);
 
   return (
-    <div className="overscroll-contain">
+    <div className="mx-auto w-full max-w-4xl px-4 py-8">
       <Head>
         <title>
           Optimal Brew Ratio Calculator | Coffee to Water Ratio Explained
@@ -47,143 +48,143 @@ export default function Calculator() {
       >
         reset all
       </Button>
-      <form className="mx-auto p-4 flex flex-col gap-8 items-center">
+      <form className="flex flex-col items-center w-full">
         <Heading as="h1" className="text-3xl font-serif">
           Optimal Brew Ratio Calculator
         </Heading>
+        <div className="w-full max-w-md">
+          {" "}
+          {/* Section layout */}
+          {/* 1. Select Brew Method */}
+          <CardSection title="Select Brew Method">
+            <RadioGroup
+              control={control}
+              name="brewMethod"
+              options={defaultBrewMethods}
+              limitAmount={4}
+            />
+          </CardSection>
+          {/* 2. Adjust Strength in range */}
+          <NewSectionCard title="Adjust Strength">
+            <RangeInput
+              control={control}
+              name="strength"
+              minValue={ratioRange.min}
+              maxValue={ratioRange.max}
+            />
+          </NewSectionCard>
+          {/* 3. Choose Units */}
+          <NewSectionCard title="Select Units">
+            <RadioGroup
+              control={control}
+              name="waterUnit"
+              label="Water"
+              labelProps={{
+                className: "text-xl text-left my-2",
+              }}
+              // <Heading as="h2" className="text-xl text-left my-2">
 
-        {/* 1. Select Brew Method */}
-        <NewSectionCard title="Select Brew Method">
-          <RadioGroup
-            control={control}
-            name="brewMethod"
-            options={defaultBrewMethods}
-            limitAmount={4}
-          />
-        </NewSectionCard>
-        {/* 2. Adjust Strength in range */}
-        <NewSectionCard title="Adjust Strength">
-          <RangeInput
-            control={control}
-            name="strength"
-            minValue={ratioRange.min}
-            maxValue={ratioRange.max}
-          />
-        </NewSectionCard>
+              // {/* </Heading> */}
 
-        {/* 3. Choose Units */}
-        <NewSectionCard title="Select Units">
-          <RadioGroup
-            control={control}
-            name="waterUnit"
-            label="Water"
-            labelProps={{
-              className: "text-xl text-left my-2",
-            }}
-            // <Heading as="h2" className="text-xl text-left my-2">
-
-            // {/* </Heading> */}
-
-            options={waterUnits}
-          />
-          <RadioGroup
-            control={control}
-            name="coffeeUnit"
-            label="Ground Coffee"
-            labelProps={{
-              className: "text-xl text-left my-2",
-            }}
-            options={coffeeUnits}
-          />
-        </NewSectionCard>
-
-        {/* 4. Choose Number of Servings */}
-        <NewSectionCard title="Decide Number of Servings">
-          <div className="w-full flex justify-center gap-4">
-            <div className=" mx-auto">
-              <NumberField
-                control={control}
-                name="servings"
-                incrementValue={1}
-              />
-
-              {/* 4.1 Dropdown toggle to show or hide custom */}
-              <Button
-                type="button"
-                onClick={() => setShowCustomize((prev) => !prev)}
-                className="px-3 py-5 mt-4 text-base md:py-4 w-full  border rounded bg-[var(--tertiary)] text-[var(--foreground)] transition-colors duration-300 hover:bg-violet-300"
-              >
-                {showCustomize ? "Hide" : "Adjust serving size"}
-              </Button>
-            </div>
-          </div>
-
-          {/* 5. Customize Water and Coffee on conditional */}
-          {showCustomize && (
-            <div className="mt-4 flex justify-center items-center gap-4">
-              <div>
+              options={waterUnits}
+            />
+            <RadioGroup
+              control={control}
+              name="coffeeUnit"
+              label="Ground Coffee"
+              labelProps={{
+                className: "text-xl text-left my-2",
+              }}
+              options={coffeeUnits}
+            />
+          </NewSectionCard>
+          {/* 4. Choose Number of Servings */}
+          <NewSectionCard title="Decide Number of Servings">
+            <div className="w-full flex justify-center gap-4">
+              <div className=" mx-auto">
                 <NumberField
                   control={control}
-                  name="waterPerServing"
-                  label="Water per serving in"
-                  onChangeHandler={reverseConvertWater}
-                  valueFormatter={convertWater}
-                  dependantValue={watch("waterUnit")}
-                  incrementValue={10}
-                />
-                <NumberField
-                  control={control}
-                  name="coffeeAmount"
-                  label="Coffee Amount in"
-                  dependantValue={watch("coffeeUnit")}
+                  name="servings"
                   incrementValue={1}
-                  valueFormatter={(value) =>
-                    value % 1 === 0 ? value : Number(value).toFixed(2)
-                  }
                 />
+
+                {/* 4.1 Dropdown toggle to show or hide custom */}
+                <Button
+                  type="button"
+                  onClick={() => setShowCustomize((prev) => !prev)}
+                  className="px-3 py-5 mt-4 text-base md:py-4 w-full  border rounded bg-[var(--tertiary)] text-[var(--foreground)] transition-colors duration-300 hover:bg-violet-300"
+                >
+                  {showCustomize ? "Hide" : "Adjust serving size"}
+                </Button>
               </div>
             </div>
-          )}
-        </NewSectionCard>
 
-        {/* 6. Display Calculated Values with Shadcn Card */}
-        <NewSectionCard title="Calculated Values">
-          <div className="grid gap-4 grid-cols-1 sm:grid-cols-2">
-            <Card>
-              <CardHeader>
-                <CardTitle>Coffee</CardTitle>
-              </CardHeader>
+            {/* 5. Customize Water and Coffee on conditional */}
+            {showCustomize && (
+              <div className="mt-4 flex justify-center items-center gap-4">
+                <div>
+                  <NumberField
+                    control={control}
+                    name="waterPerServing"
+                    label="Water per serving in"
+                    onChangeHandler={reverseConvertWater}
+                    valueFormatter={convertWater}
+                    dependantValue={watch("waterUnit")}
+                    incrementValue={10}
+                  />
+                  <NumberField
+                    control={control}
+                    name="coffeeAmount"
+                    label="Coffee Amount in"
+                    dependantValue={watch("coffeeUnit")}
+                    incrementValue={1}
+                    valueFormatter={(value) =>
+                      value % 1 === 0 ? value : Number(value).toFixed(2)
+                    }
+                  />
+                </div>
+              </div>
+            )}
+          </NewSectionCard>
+          {/* 6. Display Calculated Values with Shadcn Card */}
+          <NewSectionCard title="Calculated Values">
+            <div className="grid gap-4 grid-cols-1 sm:grid-cols-2">
+              <Card>
+                <CardHeader>
+                  <CardTitle>Coffee</CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <p>{`${
+                    coffeeAmount ? Number(coffeeAmount).toFixed(2) : ""
+                  } ${coffeeUnit}`}</p>
+                </CardContent>
+              </Card>
+              <Card>
+                <CardHeader>
+                  <CardTitle>Water</CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <p>
+                    {`${convertWater(
+                      waterAmount,
+                      watch("waterUnit") ?? "",
+                      2
+                    )} ${watch("waterUnit")}`}
+                  </p>
+                </CardContent>
+              </Card>
+            </div>
+            <Card className="mt-4">
               <CardContent>
-                <p>{`${
-                  coffeeAmount ? Number(coffeeAmount).toFixed(2) : ""
-                } ${coffeeUnit}`}</p>
+                <RatioSummary
+                  strength={watch("strength")}
+                  servings={watch("servings")}
+                  brewMethod={watch("brewMethod")}
+                />
               </CardContent>
             </Card>
-            <Card>
-              <CardHeader>
-                <CardTitle>Water</CardTitle>
-              </CardHeader>
-              <CardContent>
-                <p>
-                  {`${convertWater(
-                    waterAmount,
-                    watch("waterUnit") ?? "",
-                    2
-                  )} ${watch("waterUnit")}`}
-                </p>
-              </CardContent>
-            </Card>
-          </div>
-          <Card className="mt-4">
-            <CardContent>
-              <RatioSummary
-                strength={watch("strength")}
-                servings={watch("servings")}
-                brewMethod={watch("brewMethod")}
-              />
-            </CardContent>
-          </Card>
-        </NewSectionCard>
+          </NewSectionCard>
+        </div>
       </form>
     </div>
   );
