@@ -9,6 +9,7 @@ interface Props {
   as?: ElementType;
   variant?: Variant;
   padded?: boolean;
+  header?: ReactNode;
 }
 
 const variantClasses: Record<Variant, string> = {
@@ -21,8 +22,9 @@ export function CardSection({
   children,
   className,
   as: Tag = "section",
-  variant = "elevated",
+  variant = "hover",
   padded = true,
+  header = "h2",
 }: Props) {
   return (
     <Tag
@@ -33,6 +35,7 @@ export function CardSection({
         className
       )}
     >
+      {header && <div className="mb-4 text-xl text-center">{header}</div>}
       {children}
     </Tag>
   );

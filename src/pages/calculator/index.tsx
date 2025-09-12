@@ -9,15 +9,14 @@ import {
   NumberField,
   RatioSummary,
 } from "@/components/calculations";
-import { Heading } from "@/components/ui/heading";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import {
   defaultBrewMethods,
   coffeeUnits,
   waterUnits,
 } from "@/constants/brewOptions";
+import { Heading } from "@/components/ui/heading";
 import { Button } from "@/components/ui/button";
-import NewSectionCard from "@/components/common/NewSectionCard";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import CardSection from "@/components/common/CardSection";
 
 export default function Calculator() {
@@ -49,14 +48,13 @@ export default function Calculator() {
         reset all
       </Button>
       <form className="flex flex-col items-center w-full">
-        <Heading as="h1" className="text-3xl font-serif">
+        <Heading as="h1" className="text-3xl font-serif my-4">
           Optimal Brew Ratio Calculator
         </Heading>
-        <div className="w-full max-w-md">
-          {" "}
+        <div className="w-full max-w-md flex flex-col gap-4">
           {/* Section layout */}
           {/* 1. Select Brew Method */}
-          <CardSection title="Select Brew Method">
+          <CardSection header="Select Brew Method">
             <RadioGroup
               control={control}
               name="brewMethod"
@@ -65,16 +63,16 @@ export default function Calculator() {
             />
           </CardSection>
           {/* 2. Adjust Strength in range */}
-          <NewSectionCard title="Adjust Strength">
+          <CardSection header="Adjust Strength">
             <RangeInput
               control={control}
               name="strength"
               minValue={ratioRange.min}
               maxValue={ratioRange.max}
             />
-          </NewSectionCard>
+          </CardSection>
           {/* 3. Choose Units */}
-          <NewSectionCard title="Select Units">
+          <CardSection header="Select Units">
             <RadioGroup
               control={control}
               name="waterUnit"
@@ -97,9 +95,9 @@ export default function Calculator() {
               }}
               options={coffeeUnits}
             />
-          </NewSectionCard>
+          </CardSection>
           {/* 4. Choose Number of Servings */}
-          <NewSectionCard title="Decide Number of Servings">
+          <CardSection header="Decide Number of Servings">
             <div className="w-full flex justify-center gap-4">
               <div className=" mx-auto">
                 <NumberField
@@ -145,9 +143,9 @@ export default function Calculator() {
                 </div>
               </div>
             )}
-          </NewSectionCard>
+          </CardSection>
           {/* 6. Display Calculated Values with Shadcn Card */}
-          <NewSectionCard title="Calculated Values">
+          <CardSection header="Calculated Values">
             <div className="grid gap-4 grid-cols-1 sm:grid-cols-2">
               <Card>
                 <CardHeader>
@@ -183,7 +181,7 @@ export default function Calculator() {
                 />
               </CardContent>
             </Card>
-          </NewSectionCard>
+          </CardSection>
         </div>
       </form>
     </div>
