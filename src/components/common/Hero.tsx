@@ -10,7 +10,7 @@ export default function Hero() {
       <div className="w-full md:w-1/2 flex flex-col gap-5">
         <article className="prose max-w-prose font-">
           <Heading as="h3" className="text-2xl text-left">
-            Every coffee enthusiast&#39;s journey leads to a moment of pursuit —
+            Every coffee enthusiast&#39;s journey leads to moments of pursuit —
             the quest for the perfectly balanced cup. That&#39;s where the Brew
             Ratio Calculator steps in.
           </Heading>
