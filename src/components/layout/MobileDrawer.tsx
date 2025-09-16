@@ -8,7 +8,7 @@ import {
   DrawerTrigger,
 } from "@/components/ui/drawer";
 import Link from "next/link";
-import { ChevronRight, Menu } from "lucide-react";
+import { ChevronRight, CoffeeIcon, Menu } from "lucide-react";
 
 //Mobile navigation
 export default function MobileDrawer() {
@@ -19,9 +19,10 @@ export default function MobileDrawer() {
       </DrawerTrigger>
       <DrawerContent>
         <DrawerHeader>
-          <DrawerTitle className="text-center text-2xl m-5 font-light">
+          <CoffeeIcon className="mx-auto" />
+          {/* <DrawerTitle className="text-center text-2xl m-5 font-light">
             BrewMetrics
-          </DrawerTitle>
+          </DrawerTitle> */}
         </DrawerHeader>
         <DrawerFooter className="flex flex-col">
           <DrawerClose className="flex" asChild>

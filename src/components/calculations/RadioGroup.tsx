@@ -81,7 +81,7 @@ const RadioGroup = <TField extends FieldValues>({
                       "appearance-none mr-2 w-4 h-4 rounded-full border transition-colors",
                       "border-gray-300 bg-white",
                       "hover:border-amber-600",
-                      "checked:bg-violet-400 checked:border-amber-600"
+                      "checked:bg-violet-200 checked:border-amber-600"
                     )}
                   />
                   {option}

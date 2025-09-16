@@ -27,7 +27,9 @@ export function NavBar() {
       <div className="flex items-center justify-center  pt-2 pb-2 gap-2">
         {/* Desktop Navigation */}
         <div className="hidden sm:block">
-          <CoffeeIcon className="mr-auto" />
+          <Link href="/">
+            <CoffeeIcon className="mr-auto cursor-pointer" />
+          </Link>
         </div>
         <nav className="hidden sm:flex ml-auto">
           <ul className="flex items-center ">
