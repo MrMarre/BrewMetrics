@@ -25,6 +25,7 @@ export default function Hero() {
       <div className="w-full md:w-1/2">
         <Image
           src={balancingCups}
+          priority
           alt="Cups balancing on a table"
           className="rounded"
         />
