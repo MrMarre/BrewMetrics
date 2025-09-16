@@ -41,9 +41,10 @@ const NumberField = <TField extends FieldValues>({
               <Button
                 type="button"
                 variant="outline"
-                onClick={() =>
-                  onChange(Math.max(1, Number(value) - incrementValue))
-                }
+                onClick={() => {
+                  onChange(Math.max(1, Number(value) - incrementValue));
+                  onBlur();
+                }}
                 className="w-8 px-3 py-1 border rounded bg-[var(--tertiary)]"
               >
                 -
@@ -59,7 +60,6 @@ const NumberField = <TField extends FieldValues>({
                     ? valueFormatter(value, dependantValue ?? "") ?? ""
                     : value
                 }
-                //Works! handles trailing numbers
                 onChange={(e) => {
                   const value = e.target.value;
                   const parsedValue =
@@ -71,6 +71,7 @@ const NumberField = <TField extends FieldValues>({
                       : value ?? "";
 
                   onChange(parsedValue);
+                  onBlur();
                 }}
                 onBlur={onBlur}
                 className="text-center border rounded"
@@ -78,9 +79,10 @@ const NumberField = <TField extends FieldValues>({
               <Button
                 variant="outline"
                 type="button"
-                onClick={() =>
-                  onChange(Math.max(0, Number(value) + incrementValue))
-                }
+                onClick={() => {
+                  onChange(Math.max(0, Number(value) + incrementValue));
+                  onBlur();
+                }}
                 className="w-8 px-3 py-1 border rounded bg-[var(--tertiary)]"
               >
                 +

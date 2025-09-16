@@ -26,7 +26,13 @@ const initialValues: FormDataType = {
 };
 
 const useFormStates = () => {
-  const { reset, control, watch, setValue } = useForm<FormDataType>({
+  const {
+    reset,
+    control,
+    watch,
+    setValue,
+    formState: { touchedFields, isDirty },
+  } = useForm<FormDataType>({
     defaultValues: initialValues,
   });
   const { convertCoffeeUnit } = useUnitConversionHook();
@@ -86,6 +92,7 @@ const useFormStates = () => {
     }
   }, [coffeeUnit, servings, strength, waterPerServing]);
 
+  const isTouched = Object.keys(touchedFields ?? {}).length > 0;
   return {
     watch,
     control,
@@ -97,6 +104,8 @@ const useFormStates = () => {
     servings,
     coffeeAmount,
     coffeeUnit,
+    isDirty,
+    isTouched,
   };
 };
 

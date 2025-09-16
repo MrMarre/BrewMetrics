@@ -28,7 +28,7 @@ const RangeInput = <TField extends FieldValues>({
       control={control}
       name={name}
       render={({ field }) => {
-        const { onChange, value } = field;
+        const { onChange, value, onBlur } = field;
 
         return (
           <>
@@ -38,7 +38,10 @@ const RangeInput = <TField extends FieldValues>({
               min={minValue}
               max={maxValue}
               step={step}
-              onValueChange={(vals) => onChange(vals[0])}
+              onValueChange={(vals) => {
+                onChange(vals[0]);
+                onBlur();
+              }}
             ></Slider>
             <div className="mt-5 text-md">Current ratio is 1:{value}</div>
           </>

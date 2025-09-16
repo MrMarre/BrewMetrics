@@ -28,6 +28,7 @@ export default function Calculator() {
     ratioRange,
     coffeeUnit,
     coffeeAmount,
+    isTouched,
   } = useFormStates();
 
   const [showCustomize, setShowCustomize] = useState(false);
@@ -39,16 +40,8 @@ export default function Calculator() {
           Optimal Brew Ratio Calculator | Coffee to Water Ratio Explained
         </title>
       </Head>
-      <Button
-        className="px-3 py-1 border rounded"
-        type="button"
-        variant="outline"
-        onClick={handleResetClick}
-      >
-        reset all
-      </Button>
       <form className="flex flex-col items-center w-full">
-        <Heading as="h1" className="text-3xl font-serif my-4">
+        <Heading as="h1" className="text-3xl font-serif mb-6">
           Optimal Brew Ratio Calculator
         </Heading>
         <div className="w-full max-w-md flex flex-col gap-4">
@@ -183,6 +176,16 @@ export default function Calculator() {
             </Card>
           </CardSection>
         </div>
+        {isTouched && (
+          <Button
+            className="px-3 py-1 border rounded"
+            type="button"
+            variant="outline"
+            onClick={handleResetClick}
+          >
+            Reset all
+          </Button>
+        )}
       </form>
     </div>
   );

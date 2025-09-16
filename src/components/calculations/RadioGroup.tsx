@@ -50,7 +50,7 @@ const RadioGroup = <TField extends FieldValues>({
       control={control}
       name={name}
       render={({ field }) => {
-        const { onChange, value } = field;
+        const { onChange, value, onBlur } = field;
 
         const buttonIsDisabled = limitAmount
           ? parsedOptions.indexOf(value) >= limitAmount
@@ -76,7 +76,10 @@ const RadioGroup = <TField extends FieldValues>({
                     name={name}
                     value={option}
                     checked={value === option}
-                    onChange={() => onChange(option)}
+                    onChange={() => {
+                      onChange(option);
+                      onBlur();
+                    }}
                     className={cn(
                       "appearance-none mr-2 w-4 h-4 rounded-full border transition-colors",
                       "border-gray-300 bg-white",
