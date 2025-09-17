@@ -101,7 +101,7 @@ const RadioGroup = <TField extends FieldValues>({
                   }}
                   className={`py-5 px-8 md:py-4 w-full md:w-1/2 mt-4 mx-auto border rounded bg-[var(--tertiary)] text-base ${
                     buttonIsDisabled
-                      ? "text-red-400"
+                      ? "text-red-500"
                       : "text-[var(--foreground)]"
                   }`}
                 >

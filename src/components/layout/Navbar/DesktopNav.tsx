@@ -6,7 +6,6 @@ export default function DesktopNav() {
   const [toolsOpen, setToolsOpen] = useState(false);
   const toolsRef = useRef<HTMLLIElement>(null);
 
-  // close dropdown when clicking outside
   useEffect(() => {
     function handleClickOutside(event: MouseEvent) {
       if (

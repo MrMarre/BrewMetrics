@@ -17,9 +17,11 @@ export default function Hero() {
         </article>
         <Button
           variant="outline"
-          className="bg-[var(--accent)] text-[var(--foreground)] transition-colors duration-300 hover:bg-[var(--accent-light)] font-semibold py-4 w-full md:w-1/2"
+          className="bg-[var(--accent)] text-[var(--foreground)] transition-colors duration-300 hover:bg-[var(--accent-light)] font-semibold  w-full md:w-1/2"
         >
-          <Link href="/calculator">To Calculator</Link>
+          <Link className="w-full" href="/calculator">
+            Start Brewing Smarter
+          </Link>
         </Button>
       </div>
       <div className="w-full md:w-1/2">
