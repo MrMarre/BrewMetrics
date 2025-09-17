@@ -8,15 +8,13 @@ export type HeadingProps = {
 };
 
 export function Heading({
-  as: Component = "h1",
+  as: Heading = "h1",
   className,
   children,
 }: HeadingProps) {
   return (
-    <Component
-      className={cn("text-center font-light text-gray-900 ", className)}
-    >
+    <Heading className={cn("text-center font-light text-gray-900 ", className)}>
       {children}
-    </Component>
+    </Heading>
   );
 }
