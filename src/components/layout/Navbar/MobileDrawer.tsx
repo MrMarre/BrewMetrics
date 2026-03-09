@@ -19,9 +19,6 @@ export default function MobileDrawer() {
       <DrawerContent>
         <DrawerHeader>
           <CoffeeIcon className="mx-auto" />
-          {/* <DrawerTitle className="text-center text-2xl m-5 font-light">
-            BrewMetrics
-          </DrawerTitle> */}
         </DrawerHeader>
         <DrawerFooter className="flex flex-col">
           <DrawerClose className="flex" asChild>
