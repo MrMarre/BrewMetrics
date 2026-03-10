@@ -14,7 +14,7 @@ export default function Home() {
         keywords="coffee, brew ratio, calculator, perfect brew, coffee measurement, recipe, tools, tooling, coffee brewing, coffee brewing tools"
         url="https://brew-metrics.vercel.app/"
       />
-      <main className="container mx-auto flex flex-col gap-8 w-full sm:w-3/4 md:w-3/4  px-4 py-8">
+      <main className="container mx-auto flex flex-col gap-8 w-full  lg:w-3/4  px-4 py-8">
         <Hero />
 
         <NewSectionCard

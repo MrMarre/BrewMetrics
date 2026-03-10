@@ -7,7 +7,7 @@ import { cn } from "@/lib/utils";
 type Props = {
   className?: string;
   disableDefaultMaxWidth?: boolean;
-  children: ReactNode;
+  children?: ReactNode;
   title?: string;
   slots?: {
     title?: ReactNode;
@@ -29,7 +29,8 @@ const NewSectionCard = ({
   <section
     className={clsx(
       "p-6 bg-[var(--secondary)] rounded-lg shadow-sm hover:shadow-lg transition-shadow duration-300 border border-gray-200 w-full lg:text-xl",
-      !disableDefaultMaxWidth && "max-w-md",
+      !disableDefaultMaxWidth &&
+        "max-w-md md:max-w-lg lg:max-w-xl xl:max-w-2xl",
       className,
     )}
     {...slotProps?.root}
