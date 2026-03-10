@@ -20,7 +20,7 @@ export default function Home() {
         <NewSectionCard
           title="Welcome!"
           disableDefaultMaxWidth
-          className="max-w-full"
+          className="max-w-full xl:text-xl"
         >
           <article className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div className="flex  items-center flex-col gap-4">

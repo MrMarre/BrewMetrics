@@ -28,9 +28,9 @@ const NewSectionCard = ({
 }: Props) => (
   <section
     className={clsx(
-      "p-6 bg-[var(--secondary)] rounded-lg shadow-sm hover:shadow-lg transition-shadow duration-300 border border-gray-200 w-full",
+      "p-6 bg-[var(--secondary)] rounded-lg shadow-sm hover:shadow-lg transition-shadow duration-300 border border-gray-200 w-full lg:text-xl",
       !disableDefaultMaxWidth && "max-w-md",
-      className
+      className,
     )}
     {...slotProps?.root}
   >

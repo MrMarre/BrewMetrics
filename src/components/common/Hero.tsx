@@ -6,7 +6,14 @@ import { Heading } from "../ui/heading";
 export default function Hero() {
   return (
     <section className="max-w-full flex flex-col md:flex-row justify-between items-center gap-5 mt-6">
-      <div className="w-full md:w-1/2 flex flex-col gap-5">
+      <div className="w-full md:w-1/2 flex flex-col gap-5 shadow-xl rounded-2xl p-8 md:p-12 bg-[var(--secondary)]">
+        {/* rounded-3xl
+
+          shadow-xl (soft, diffused) 
+
+          bg-white or a subtle tinted color (#fefbf7, #faf4ef, etc.)
+
+          p-8 md:p-12 */}
         <article className="flex flex-col gap-5">
           <Heading
             as="h1"
@@ -35,7 +42,7 @@ export default function Hero() {
             asChild
             variant="outline"
             size="lg"
-            className="hidden font-semibold lg:inline-flex"
+            className="hidden bg-[var(--accent)] font-semibold lg:inline-flex"
           >
             <Link href="/about" className="w-full md:w-auto block text-center">
               Learn More

@@ -103,7 +103,7 @@ export default function Calculator() {
                 <Button
                   type="button"
                   onClick={() => setShowCustomize((prev) => !prev)}
-                  className="px-3 py-5 mt-4 text-base md:py-4 w-full  border rounded bg-[var(--tertiary)] text-[var(--foreground)] transition-colors duration-300 hover:bg-violet-300"
+                  className="px-3 py-5 mt-4 text-base md:py-4 w-full border rounded bg-[var(--tertiary)] text-[var(--foreground)] transition-colors duration-300 hover:bg-violet-300"
                 >
                   {showCustomize ? "Hide" : "Adjust serving size"}
                 </Button>
@@ -159,7 +159,7 @@ export default function Calculator() {
                     {`${convertWater(
                       waterAmount,
                       watch("waterUnit") ?? "",
-                      2
+                      2,
                     )} ${watch("waterUnit")}`}
                   </p>
                 </CardContent>
