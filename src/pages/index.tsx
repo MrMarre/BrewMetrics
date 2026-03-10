@@ -14,7 +14,7 @@ export default function Home() {
         keywords="coffee, brew ratio, calculator, perfect brew, coffee measurement, recipe, tools, tooling, coffee brewing, coffee brewing tools"
         url="https://brew-metrics.vercel.app/"
       />
-      <main className="container mx-auto flex flex-col gap-8 w-full  lg:w-3/4  px-4 py-8">
+      <main className="container flex flex-col w-full gap-8 px-4 py-8 mx-auto lg:w-3/4">
         <Hero />
 
         <NewSectionCard
@@ -22,8 +22,8 @@ export default function Home() {
           disableDefaultMaxWidth
           className="max-w-full xl:text-xl"
         >
-          <article className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            <div className="flex  items-center flex-col gap-4">
+          <article className="grid grid-cols-1 gap-4 md:grid-cols-2">
+            <div className="flex flex-col items-center gap-4">
               <SvgImage
                 src={coffeeMaker}
                 alt="auto drip brewer"
@@ -36,9 +36,9 @@ export default function Home() {
                 tools—because life&apos;s too short for bad coffee!
               </p>
             </div>
-            <div className="flex  items-center flex-col gap-4">
+            <div className="flex flex-col items-center gap-4">
               <SvgImage src={coffeeScale} alt="scale" height={60} width={60} />
-              <p className="rounded self-start">
+              <p className="self-start rounded">
                 Brewing perfections starts here. Our intuitive coffee-to-water
                 ratio calculator empowers you to fine-tune every cup to your
                 taste. Effortlessly adjust serving sizes and strength to unlock
@@ -52,7 +52,7 @@ export default function Home() {
           disableDefaultMaxWidth
           className="max-w-full md:flex-row"
         >
-          <article className="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <article className="grid grid-cols-1 gap-4 md:grid-cols-2">
             <p className="">
               The habitual act of using a coffee scoop as a measurement may lead
               to unwanted inconsistencies in regards to the variance of roast
@@ -76,7 +76,7 @@ export default function Home() {
           disableDefaultMaxWidth
           className="max-w-full md:flex-row"
         >
-          <article className="grid grid-cols-1 md:grid-cols-3 gap-4">
+          <article className="grid grid-cols-1 gap-4 md:grid-cols-3">
             <p>
               This site is dedicated to helping coffee lovers brew better coffee
               with precision and confidence. Whether you&apos;re a beginner or

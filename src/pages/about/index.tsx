@@ -6,11 +6,11 @@ import Link from "next/link";
 
 export default function About() {
   return (
-    <div className="container mx-auto flex justify-center items-center flex-col w-full lg:w-3/4 px-4 py-8">
+    <div className="container flex flex-col items-center justify-center w-full px-4 py-8 mx-auto lg:w-3/4">
       <NewSectionCard
         title="About"
         disableDefaultMaxWidth
-        className="w-full flex flex-col gap-4 items-center"
+        className="flex flex-col items-center w-full gap-4"
       >
         <p>
           My coffee journey started with a simple realization—some cups tasted
