@@ -27,13 +27,9 @@ export default function Hero() {
         <div className="flex flex-row items-start w-full gap-3 md:flex-col md:w-auto">
           <Button
             asChild
-            variant="outline"
-            size="lg"
-            className="w-full md:w-auto font-semibold bg-[var(--accent)]
-            text-[var(--foreground)] transition-colors duration-300
-            hover:bg-[var(--accent-light)] rounded-lg shadow-md hover:shadow-lg 
-            transform hover:-translate-y-0.5
-             h-12 md:h-14 lg:h-16 px-6 md:px-8 lg:px-10 text-base md:text-lg lg:text-xl "
+            variant="leaf"
+            size="hero"
+            className="w-full md:w-auto font-semibold bg-[var(--accent)] text-[var(--foreground)] transition-colors duration-300 hover:bg-[var(--accent-light)] h-12 md:h-14 lg:h-16 px-6 md:px-8 lg:px-10 text-base md:text-lg lg:text-xl "
           >
             <Link href="/calculator" className="block w-full">
               Start Brewing Smarter
@@ -41,9 +37,9 @@ export default function Hero() {
           </Button>
           <Button
             asChild
-            variant="outline"
-            size="lg"
-            className="hidden md:inline-flex justify-start bg-[var(--accent)] text-[var(--foreground)] hover:bg-[var(--accent-light)] font-semibold"
+            variant="leaf"
+            size="hero"
+            className="hidden md:inline-flex justify-start bg-[var(--accent)]  hover:bg-[var(--accent-light)] font-semibold"
           >
             <Link href="/about" className="block w-full text-center md:w-auto">
               Learn More
