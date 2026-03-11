@@ -29,10 +29,10 @@ export default function Hero() {
             asChild
             variant="outline"
             size="lg"
-            className="w-full md:w-auto font-semibold bg-[var(--accent)]  
+            className="w-full md:w-auto font-semibold bg-[var(--accent)]
             text-[var(--foreground)] transition-colors duration-300
-             hover:bg-[var(--accent-light)] rounded-lg shadow-md 
-             hover:shadow-lg transform hover:-translate-y-0.5
+            hover:bg-[var(--accent-light)] rounded-lg shadow-md hover:shadow-lg 
+            transform hover:-translate-y-0.5
              h-12 md:h-14 lg:h-16 px-6 md:px-8 lg:px-10 text-base md:text-lg lg:text-xl "
           >
             <Link href="/calculator" className="block w-full">

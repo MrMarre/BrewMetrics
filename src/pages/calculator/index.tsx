@@ -34,17 +34,17 @@ export default function Calculator() {
   const [showCustomize, setShowCustomize] = useState(false);
 
   return (
-    <div className="mx-auto w-full max-w-4xl px-4 py-8">
+    <div className="w-full max-w-4xl px-4 py-8 mx-auto">
       <Head>
         <title>
           Optimal Brew Ratio Calculator | Coffee to Water Ratio Explained
         </title>
       </Head>
       <form className="flex flex-col items-center w-full">
-        <Heading as="h1" className="text-3xl font-serif mb-6">
+        <Heading as="h1" className="mb-6 font-serif text-3xl">
           Optimal Brew Ratio Calculator
         </Heading>
-        <div className="w-full max-w-md flex flex-col gap-4">
+        <div className="flex flex-col w-full max-w-md gap-4">
           {/* Section layout */}
           {/* 1. Select Brew Method */}
           <CardSection header="Select Brew Method">
@@ -73,7 +73,7 @@ export default function Calculator() {
               labelProps={{
                 className: "text-xl text-left my-2",
               }}
-              // <Heading as="h2" className="text-xl text-left my-2">
+              // <Heading as="h2" className="my-2 text-xl text-left">
 
               // {/* </Heading> */}
 
@@ -91,8 +91,8 @@ export default function Calculator() {
           </CardSection>
           {/* 4. Choose Number of Servings */}
           <CardSection header="Decide Number of Servings">
-            <div className="w-full flex justify-center gap-4">
-              <div className=" mx-auto">
+            <div className="flex justify-center w-full gap-4">
+              <div className="mx-auto ">
                 <NumberField
                   control={control}
                   name="servings"
@@ -112,7 +112,7 @@ export default function Calculator() {
 
             {/* 5. Customize Water and Coffee on conditional */}
             {showCustomize && (
-              <div className="mt-4 flex justify-center items-center gap-4">
+              <div className="flex items-center justify-center gap-4 mt-4">
                 <div>
                   <NumberField
                     control={control}
@@ -139,7 +139,7 @@ export default function Calculator() {
           </CardSection>
           {/* 6. Display Calculated Values with Shadcn Card */}
           <CardSection header="Calculated Values">
-            <div className="grid gap-4 grid-cols-1 sm:grid-cols-2">
+            <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
               <Card>
                 <CardHeader>
                   <CardTitle>Coffee</CardTitle>

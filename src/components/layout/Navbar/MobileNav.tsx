@@ -4,9 +4,9 @@ import MobileDrawer from "./MobileDrawer";
 
 export default function MobileNav() {
   return (
-    <div className="flex sm:hidden w-full items-center justify-between">
+    <div className="flex items-center justify-between w-full sm:hidden">
       <MobileDrawer />
-      <CoffeeIcon className="ml-auto mb-2 h-7 w-7" />
+      <CoffeeIcon className="mb-2 ml-auto h-7 w-7" />
     </div>
   );
 }

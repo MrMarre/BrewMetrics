@@ -6,7 +6,7 @@ import Link from "next/link";
 
 export default function About() {
   return (
-    <div className="container flex flex-col items-center justify-center w-full px-4 py-8 mx-auto lg:w-3/4">
+    <div className="container flex flex-col items-center justify-center w-full px-4 py-8 mx-auto lg:w-3/4 ">
       <NewSectionCard
         title="About"
         disableDefaultMaxWidth
