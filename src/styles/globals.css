@@ -11,8 +11,11 @@
   --tertiary: #ceccf6;
 
   /* --accent: #33ac92; */
-  --accent: #21dbb3;
-  --accent-light: #26efc3;
+   /* greener accents for layered button shadows */
+  --accent: #10b981; /* emerald-500 */
+  --accent-light: #34d399; /* emerald-300 */
+  --accent-dark: rgba(6,95,70,0.9); /* emerald-700 / dark with alpha */
+  --foreground: #171717;
 
   --foreground: #171717;
 
