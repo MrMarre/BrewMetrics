@@ -7,7 +7,7 @@ import MobileNav from "./MobileNav";
 export function NavBar() {
   return (
     <header className="border-b px-4 bg-[var(--tertiary)] sticky top-0 z-50">
-      <div className="flex items-center justify-center pt-2 pb-2 gap-2">
+      <div className="flex items-center justify-center  gap-2">
         {/* Desktop Navigation */}
         <div className="hidden sm:block">
           <Link href="/">

@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import ToolsDropdown from "./ToolsDropdown";
 import NavLink from "./NavLink";
 
@@ -21,14 +21,14 @@ export default function DesktopNav() {
 
   return (
     <nav className="hidden sm:flex ml-auto">
-      <ul className="flex items-center">
+      <ul className="flex items-center h-full">
         <NavLink href="/">Home</NavLink>
         <NavLink href="/about">About</NavLink>
 
         <li ref={toolsRef} className="relative">
           <button
             onClick={() => setToolsOpen((prev) => !prev)}
-            className="px-3 py-2.5 rounded-md transition-colors duration-300 hover:bg-violet-400"
+            className="p-5 rounded-md transition-colors duration-300 hover:bg-violet-400"
           >
             Tools
           </button>

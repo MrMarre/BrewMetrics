@@ -11,7 +11,7 @@ export default function NavLink({ href, children }: NavLinkProps) {
     <li className="h-full">
       <Link
         href={href}
-        className="flex items-center h-full px-3 py-3 rounded-lg transition-all duration-300 hover:bg-violet-400"
+        className="flex items-center h-full p-5 rounded-lg transition-all duration-300 hover:bg-violet-400"
       >
         {children}
       </Link>
