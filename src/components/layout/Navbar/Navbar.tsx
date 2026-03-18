@@ -11,7 +11,7 @@ export function NavBar() {
         {/* Desktop Navigation */}
         <div className="hidden sm:block">
           <Link href="/">
-            <CoffeeIcon className="mr-auto cursor-pointer" />
+            <CoffeeIcon className="mr-auto md:size-9 lg:size-10 xl:size-12 auto cursor-pointer" />
           </Link>
         </div>
         <DesktopNav />
