@@ -21,7 +21,7 @@ export default function DesktopNav() {
 
   return (
     <nav className="hidden sm:flex ml-auto">
-      <ul className="flex items-center h-full  md:text-base lg:text-lg xl:text-xl 2xl:text-2xl">
+      <ul className="flex items-center text-sm md:text-base lg:text-lg xl:text-xl 2xl:text-2xl">
         <NavLink href="/">Home</NavLink>
         <NavLink href="/about">About</NavLink>
 
