@@ -21,11 +21,11 @@ export default function DesktopNav() {
 
   return (
     <nav className="hidden sm:flex ml-auto">
-      <ul className="flex items-center h-full">
+      <ul className="flex items-center h-full  md:text-base lg:text-lg xl:text-xl 2xl:text-2xl">
         <NavLink href="/">Home</NavLink>
         <NavLink href="/about">About</NavLink>
 
-        <li ref={toolsRef} className="relative">
+        <li ref={toolsRef} className="relative inline-block">
           <button
             onClick={() => setToolsOpen((prev) => !prev)}
             className="p-5 rounded-md transition-colors duration-300 hover:bg-violet-400"

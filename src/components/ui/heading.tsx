@@ -13,7 +13,7 @@ export function Heading({
   children,
 }: HeadingProps) {
   return (
-    <Heading className={cn("text-center font-light lg:text-xl 2xl:text-4xl  text-gray-900 ", className)}>
+    <Heading className={cn("text-center font-light text-gray-900 ", className)}>
       {children}
     </Heading>
   );
