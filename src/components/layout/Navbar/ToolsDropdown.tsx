@@ -10,10 +10,10 @@ export default function ToolsDropdown({ onClose }: ToolsDropdownProps) {
     <div
       className="
         absolute 
-        left-[-113px]
-        top-10
-        mt-2 
-        w-48
+        right-0 
+        mt-2
+        translate-x-0
+        w-max min-w-[12rem]
         bg-white 
         border 
         rounded-md 

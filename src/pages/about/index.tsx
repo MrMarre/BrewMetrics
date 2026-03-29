@@ -11,7 +11,7 @@ export default function About() {
         title="About"
         disableDefaultMaxWidth
         className="flex flex-col items-center w-full gap-4"
-      >
+      > <div className="md:columns-2">
         <p>
           My coffee journey started with a simple realization—some cups tasted
           great, while others fell flat. I was using the same coffee and brewing
@@ -37,7 +37,7 @@ export default function About() {
           looking to fine-tune your skills, I hope this space helps you brew
           with confidence and curiosity. Let&apos;s make every cup count!
         </p>
-
+</div>
         <Button
           variant="outline"
           className="bg-[var(--accent)] text-[var(--foreground)] transition-colors duration-300 hover:bg-[var(--accent-light)] font-semibold py-4 w-full md:w-1/2 my-5"
