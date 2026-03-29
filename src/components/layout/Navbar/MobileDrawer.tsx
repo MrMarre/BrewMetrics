@@ -13,7 +13,7 @@ import { ChevronRight, CoffeeIcon, Menu } from "lucide-react";
 export default function MobileDrawer() {
   return (
     <Drawer direction="top">
-      <DrawerTrigger className="px-2 py-2 mb-2 border rounded-md sm:hidden">
+      <DrawerTrigger className="px-2 py-2 border rounded-md sm:hidden">
         <Menu />
       </DrawerTrigger>
       <DrawerContent>
