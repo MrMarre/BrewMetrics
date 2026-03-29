@@ -2,7 +2,6 @@ export type BrewDefaults = {
   servings: number;
   waterPerServing: number;
 };
-//Mainly waterPerServing
 
 export const BREW_METHOD_DEFAULTS: Record<string, BrewDefaults> = {
   "Pour-over": { servings: 1, waterPerServing: 240 },
