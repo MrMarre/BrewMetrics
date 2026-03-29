@@ -4,7 +4,7 @@ export type RatioRange = {
   baseValue: number;
   step: number;
 };
-// recommended range, with preferred baseline
+
 export const BREW_METHOD_RANGES: Record<string, RatioRange> = {
   "Pour-over": { min: 15, baseValue: 16, max: 17, step: 1 },
   "Auto drip": { min: 14, baseValue: 16, max: 17, step: 1 },

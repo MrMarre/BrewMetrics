@@ -8,7 +8,6 @@ export function NavBar() {
   return (
     <header className="border-b px-4 bg-[var(--tertiary)] sticky top-0 z-50">
       <div className="flex items-center justify-center  gap-2">
-        {/* Desktop Navigation */}
         <div className="hidden sm:block">
           <Link href="/">
             <CoffeeIcon className="mr-auto md:size-9 lg:size-10 auto cursor-pointer" />
@@ -17,7 +16,6 @@ export function NavBar() {
         <DesktopNav />
       </div>
 
-      {/* Mobile Navigation */}
       <MobileNav />
     </header>
   );

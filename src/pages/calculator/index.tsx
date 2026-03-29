@@ -45,8 +45,6 @@ export default function Calculator() {
           Optimal Brew Ratio Calculator
         </Heading>
         <div className="flex flex-col w-full max-w-md gap-4">
-          {/* Section layout */}
-          {/* 1. Select Brew Method */}
           <CardSection header="Select Brew Method">
             <RadioGroup
               control={control}
@@ -55,7 +53,6 @@ export default function Calculator() {
               limitAmount={4}
             />
           </CardSection>
-          {/* 2. Adjust Strength in range */}
           <CardSection header="Adjust Strength">
             <RangeInput
               control={control}
@@ -64,7 +61,6 @@ export default function Calculator() {
               maxValue={ratioRange.max}
             />
           </CardSection>
-          {/* 3. Choose Units */}
           <CardSection header="Select Units">
             <RadioGroup
               control={control}
@@ -73,9 +69,7 @@ export default function Calculator() {
               labelProps={{
                 className: "text-xl text-left my-2",
               }}
-              // <Heading as="h2" className="my-2 text-xl text-left">
-
-              // {/* </Heading> */}
+              
 
               options={waterUnits}
             />
@@ -89,7 +83,6 @@ export default function Calculator() {
               options={coffeeUnits}
             />
           </CardSection>
-          {/* 4. Choose Number of Servings */}
           <CardSection header="Decide Number of Servings">
             <div className="flex justify-center w-full gap-4">
               <div className="mx-auto ">
@@ -99,7 +92,6 @@ export default function Calculator() {
                   incrementValue={1}
                 />
 
-                {/* 4.1 Dropdown toggle to show or hide custom */}
                 <Button
                   type="button"
                   onClick={() => setShowCustomize((prev) => !prev)}
@@ -110,7 +102,6 @@ export default function Calculator() {
               </div>
             </div>
 
-            {/* 5. Customize Water and Coffee on conditional */}
             {showCustomize && (
               <div className="flex items-center justify-center gap-4 mt-4">
                 <div>
@@ -137,7 +128,6 @@ export default function Calculator() {
               </div>
             )}
           </CardSection>
-          {/* 6. Display Calculated Values with Shadcn Card */}
           <CardSection header="Calculated Values">
             <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
               <Card>
