@@ -15,8 +15,8 @@ type Props<TField extends FieldValues> = {
   labelProps?: Partial<HeadingProps>;
 };
 
-//* Component with a flexible radio.
-// limit amount handles limiting of number of radio's
+
+// limit sets the initial brew method options, parsed is governed by the show more/less button
 
 const RadioGroup = <TField extends FieldValues>({
   control,
@@ -28,13 +28,12 @@ const RadioGroup = <TField extends FieldValues>({
 }: Props<TField>) => {
   const allOptions = options;
 
-  // parsedOptions innehåller de alternativ som ska visas initialt.
+  
 
   const [parsedOptions, setParsedOptions] = useState<Array<string>>(
     limitAmount ? options.slice(0, limitAmount) : options
   );
 
-  // isExpanded avgör om listan är expanderad (alla alternativ visas) eller inte.
   const [isExpanded, setIsExpanded] = useState<boolean>(false);
 
   const handleExpandClick = () => {
@@ -58,7 +57,6 @@ const RadioGroup = <TField extends FieldValues>({
 
         return (
           <>
-            {/* {label} */}
             <Heading
               className={cn("text-xl", labelProps?.className)}
               {...labelProps}

@@ -65,7 +65,4 @@ function Button({
     />
   );
 }
-  // "h-12 md:h-14 px-6 md:px-8 text-base md:text-lg has-[>svg]:px-4 rounded-[30px_6px_30px_6px] " +
-  //          "transform hover:-translate-y-0.5 " +
-  //         "hover:shadow-[0_3px_0_var(--accent-dark,#111),0_6px_0_var(--accent-dark,#111),0_10px_15px_rgba(0,0,0,0.4)]",
 export { Button, buttonVariants };

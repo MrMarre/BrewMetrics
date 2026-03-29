@@ -1,9 +1,11 @@
+//Fix for later: Refactor to use a more robust unit conversion
+
 export function convertWater(
   amount: number,
   toUnit: string,
   precision?: number
 ): number {
-  // grundenhet i tusendelar
+  
   let converted: number;
   switch (toUnit) {
     case "grams":
@@ -22,7 +24,6 @@ export function convertWater(
   }
 }
 
-// Omvandlar en vattenmängd från en viss enhet till tusendelar för enkelhetens skull.
 export function reverseConvertWater(amount: number, fromUnit: string): number {
   switch (fromUnit) {
     case "milliliters":

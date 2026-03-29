@@ -13,8 +13,6 @@ type Props<TField extends FieldValues> = {
   step?: number;
 };
 
-//* Used for adjusting values with shadcns Slider/input[type=range]
-
 const RangeInput = <TField extends FieldValues>({
   control,
   name,
