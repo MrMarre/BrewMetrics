@@ -1,40 +1,90 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/pages/api-reference/create-next-app).
+# BrewMetrics
 
-## Getting Started
+BrewMetrics is a responsive coffee brewing calculator built with Next.js, React, TypeScript, and Tailwind CSS. The goal is simple: help home brewers make more consistent coffee by calculating coffee-to-water ratios based on brew method, strength, unit preferences, and serving size.
 
-First, run the development server:
+For recruiters and reviewers, this project demonstrates product thinking, state-driven UI design, unit conversion logic, and a clean component-based frontend structure.
+
+## Live Project
+
+Production URL: [brew-metrics.vercel.app](https://brew-metrics.vercel.app/)
+
+## What It Does
+
+- Lets users choose from multiple brew methods such as Pour-over, French press, V60, AeroPress, Moka Pot, and Cold Brew.
+- Adjusts recommended ratio ranges based on the selected brew method.
+- Calculates water and coffee amounts dynamically as the user changes strength, servings, and units.
+- Supports multiple water units and coffee units, including grams, liters, fluid ounces, ounces, and coffee spoons.
+- Includes supporting marketing pages to explain the product and its brewing philosophy.
+
+## Why This Project Is Strong Portfolio Material
+
+- Solves a real user problem instead of being a generic CRUD app.
+- Turns domain rules into interactive frontend logic with immediate feedback.
+- Uses reusable UI primitives and custom hooks to keep presentation separate from calculation behavior.
+- Shows attention to UX through responsive layouts, friendly copy, and clear result summaries.
+- Reflects practical engineering tradeoffs: small scope, focused feature set, and a structure that can be extended without rewriting the app.
+
+## Tech Stack
+
+- Next.js 16
+- React 19
+- TypeScript
+- Tailwind CSS v4
+- React Hook Form
+- Radix UI primitives
+- Vaul
+
+## Architecture Notes
+
+The app uses the Next.js Pages Router and keeps most business logic on the client side.
+
+- `src/pages/` contains the route-level pages for the landing page, calculator, and about page.
+- [`src/hooks/useFormStates.ts`](src/hooks/useFormStates.ts) coordinates calculator state, derived values, and form resets.
+- [`src/utils/unitConversion.ts`](src/utils/unitConversion.ts) contains the measurement conversion logic used across the calculator.
+- [`src/constants/`](src/constants) stores brewing defaults, available options, and ratio ranges so the calculator rules stay centralized.
+- [`src/components/`](src/components) is split into calculation, layout, common, and UI building blocks for reuse and clarity.
+
+
+## Local Setup
+
+### Prerequisites
+
+- Node.js 20+
+- npm
+
+### Run Locally
+
+```bash
+npm install
+npm run dev
+```
+
+Then open `http://localhost:3000`.
+
+### Available Scripts
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+npm run build
+npm run start
+npm run lint
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## What I Focused On
 
-You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
+- Building a small tool with clear real-world value.
+- Keeping calculation rules easy to reason about and update.
+- Creating a responsive experience that works on both desktop and mobile.
+- Using typed abstractions and reusable components instead of page-level duplication.
 
-[API routes](https://nextjs.org/docs/pages/building-your-application/routing/api-routes) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
+## Future Improvements
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/pages/building-your-application/routing/api-routes) instead of React pages.
+- Add brew timers and other relevant tools for brewing perfect coffee.
+- Add automated tests around unit conversion and ratio calculations.
+- Fix and harden coffee unit conversion naming and flow to make the logic less error-prone.
+- Persist user preferences such as chosen units or last-used brew method.
+- Expand the educational side of the product with brew guides and method-specific tips.
 
-This project uses [`next/font`](https://nextjs.org/docs/pages/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Notes
 
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn-pages-router) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/pages/building-your-application/deploying) for more details.
+This project currently focuses on frontend interaction and calculator logic. It does not include authentication, a backend, or persistent data storage, which was an intentional scope decision.
